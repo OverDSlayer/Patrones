@@ -117,58 +117,7 @@ body {
 }
 
 
-.panel-almacen{
-    width: 100%;
-    background-color: #fff;
-}
 
-.almacen-container {
-    text-align: center;/* Centra el texto */
-    margin-top: 40px; 
-    margin-bottom: 20px; /* Agrega un espacio debajo del texto */
-}
-
-.almacen-container h2 {
-    margin: 0; /* Elimina cualquier margen adicional alrededor del título */
-    padding: 10px 0; /* Añade un poco de espacio arriba y abajo del texto */
-}
-.icon-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px 0;
-}
-
-.icon-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 100px;
-    background-color: #ffffff; /* Fondo del botón */
-    border: 1px solid #fff8f8;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s;
-}
-
-.icon-button:hover {
-    background-color: #e0e0e0;
-}
-
-.icon-button i {
-    font-size: 40px; /* Tamaño del icono */
-    margin-bottom: 5px;
-    color: #0c0b0b; /* Color del icono */
-}
-
-.icon-button p {
-    margin: 0;
-    font-size: 12px;
-}
 
 
 
