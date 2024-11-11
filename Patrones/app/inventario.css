@@ -85,3 +85,12 @@ body {
     padding: 20px;
     cursor: pointer;
 }
+
+
+.main-content{
+    color: #f9f9f9;
+}
+
+.inventory-table{
+    color: #000000;
+}
