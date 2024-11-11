@@ -6,10 +6,13 @@
     <title>Inventario</title>
     <link rel="stylesheet" href="principal.css">
     <link rel="stylesheet" href="inventario.css"> <!-- Archivo CSS específico para Inventario -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <script src="principal.js"></script> <!-- Archivo JavaScript general -->
     <script src="inventario.js" defer></script> <!-- Archivo JavaScript específico para Inventario -->
 </head>
 <body>
+    
     <div class="dashboard">
         <!-- Botón para desplegar/ocultar el menú -->
         <button class="menu-toggle">☰ Menú</button>
@@ -32,6 +35,24 @@
                 <h1>Gestión de Inventario</h1>
             </header>
 
+            <!--Almacen-->
+            <div class="panel-almacen">
+                <div class="almacen-container">
+                    <h2>Almacén</h2>
+                </div>
+            </div>
+                <div class="icon-container">
+                    <button class="icon-button">
+                        <i class="fa-solid fa-book"></i>
+                        <p>libros</p>
+                    </button>
+                    <button class="icon-button">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                        <p>Productos</p>
+                    </button>
+                    <!-- Agrega más iconos como necesites -->
+                </div>
+
             <!-- Tabla de Productos -->
             <div class="inventory-table">
                 <table>
@@ -44,14 +65,16 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="inventoryItems">
-                        <!-- Los elementos del inventario se generarán dinámicamente -->
-                    </tbody>
+                        <tbody id="inventoryItems">
+                            <!-- Los elementos del inventario se generarán dinámicamente -->
+                        </tbody>
                 </table>
             </div>
 
             <!-- Botón para agregar producto -->
-            <button class="button" onclick="addProduct()">Agregar Producto</button>
+            <div class="buttonAgregar">
+                <button class="button" onclick="addProduct()">Agregar Producto</button>
+            </div>
         </div>
     </div>
 </body>

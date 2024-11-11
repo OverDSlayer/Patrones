@@ -18,7 +18,7 @@ function displayProducts(products) {
             <td>${product.name}</td>
             <td>${product.quantity}</td>
             <td>$${product.price.toFixed(2)}</td>
-            <td><button onclick="editProduct(${product.id})">Editar</button></td>
+            <td style="background-color: #022c58;"><button onclick="editProduct(${product.id})">Editar</button></td>
         `;
         inventoryTable.appendChild(row);
     });
