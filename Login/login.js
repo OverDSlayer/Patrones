@@ -10,7 +10,7 @@ function validateLogin(event) {
         // Guarda el usuario en localStorage
         localStorage.setItem('loggedUser', username);
         // Redirige a la página principal
-        window.location.href = "../../Patrones/app/principal.html";
+        window.location.href = "../Main/principal.html";
     } else {
         alert("Usuario o contraseña incorrectos");
     }
