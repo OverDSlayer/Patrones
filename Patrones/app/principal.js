@@ -168,3 +168,8 @@ function updateCharts() {
     monthlyChangePieChart.data.datasets[0].data = calculateMonthlyChangePercentages();
     monthlyChangePieChart.update();
 }
+function redirectToInventario() {
+    window.location.href = "inventario.html";
+}
+
+

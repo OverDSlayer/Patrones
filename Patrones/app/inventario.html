@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="inventario.css"> <!-- Archivo CSS específico para Inventario -->
+    <script src="principal.js"></script> <!-- Archivo JavaScript general -->
+    <script src="inventario.js" defer></script> <!-- Archivo JavaScript específico para Inventario -->
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Botón para desplegar/ocultar el menú -->
+        <button class="menu-toggle">☰ Menú</button>
+        
+        <!-- Menú lateral -->
+        <aside class="sidebar" id="sidebar">
+            <ul>
+                <li onclick="redirectToInicio()">Inicio</li>
+                <li onclick="redirectToInformes()">Informes</li>
+                <li onclick="redirectToInventario()">Inventario</li> <!-- Indica que estás en Inventario -->
+                <li>Ventas</li>
+                <li>Configuración</li>
+            </ul>
+        </aside>
+
+        <!-- Contenido principal para Inventario -->
+        <div class="main-content">
+            <header class="header">
+                <h1>Gestión de Inventario</h1>
+            </header>
+
+            <!-- Tabla de Productos -->
+            <div class="inventory-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryItems">
+                        <!-- Los elementos del inventario se generarán dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Botón para agregar producto -->
+            <button class="button" onclick="addProduct()">Agregar Producto</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,3 +1,4 @@
+/* Estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -8,13 +9,11 @@ body {
     display: flex;
     min-height: 100vh;
 }
-
 .container {
     max-width: 600px;
     margin: auto;
     padding: 20px;
 }
-
 .button {
     padding: 10px 15px;
     margin: 5px;
@@ -23,19 +22,15 @@ body {
     border: none;
     cursor: pointer;
 }
-
 .button:hover {
     background-color: #0056b3;
 }
-
 .report {
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
 }
-
-
 .dashboard {
     display: flex;
     width: 100%;
@@ -51,36 +46,66 @@ body {
     cursor: pointer;
     font-size: 20px;
     border-radius: 5px;
-    z-index: 1000; /* Asegura que el botón esté encima del contenido */
+     z-index: 1000;
+   
 }
-.sidebar { /*ampliacion de la barra */ 
+.sidebar {
     width: 20%;
     background-color: #2E3A59;
     color: #fff;
     padding: 20px;
     transition: transform 0.3s ease;
-    position: fixed; /* Mantener la barra lateral fija */
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
 }
-
-
 .sidebar h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
-
-.sidebar ul { /*contenido de la barra*/
+.sidebar ul {
     list-style: none;
     font-size: 18px;
     padding: 10px;
-    color: #fffdfd; /* Color de la letra */
+    color: #fffdfd;
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
 .sidebar li {
     padding: 20px;
     cursor: pointer;
+}
+.sidebar li:hover {
+    background-color: #3b4a6b;
+}
+
+/* Estilos específicos para Inventario */
+.inventory-table {
+    margin: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+.inventory-table th,
+.inventory-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.inventory-table th {
+    background-color: #007BFF;
+    color: white;
+}
+.inventory-table td {
+    background-color: #f9f9f9;
+}
+.inventory-table button {
+    padding: 5px 10px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    cursor: pointer;
+}
+.inventory-table button:hover {
+    background-color: #218838;
 }
