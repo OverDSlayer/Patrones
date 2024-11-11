@@ -2,26 +2,24 @@ function toggleMenu() {
     const sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle("hidden");
 }
+
 // Clase abstracta para generación de informes
 class Informe {
-    // Método Template Method para generar el informe
     generarInforme() {
         const datos = this.obtenerDatos();
         const informeFormateado = this.formatearInforme(datos);
         this.exportarInforme(informeFormateado);
+        return informeFormateado; // Retorna el informe para mostrar en HTML
     }
 
-    // Método abstracto: Obtención de datos
     obtenerDatos() {
         throw new Error("Este método debe ser implementado por las subclases.");
     }
 
-    // Método abstracto: Formateo de los datos
     formatearInforme(datos) {
         throw new Error("Este método debe ser implementado por las subclases.");
     }
 
-    // Método abstracto: Exportación del informe
     exportarInforme(informe) {
         throw new Error("Este método debe ser implementado por las subclases.");
     }
@@ -30,13 +28,12 @@ class Informe {
 // Informe de ventas
 class InformeVentas extends Informe {
     obtenerDatos() {
-        // Simulación de obtención de datos de ventas
         return [
             { producto: "Cuadernos", vendidos: 150 },
             { producto: "Lapiceros", vendidos: 120 },
-            { producto: "Mochilas", vendidos: 140},
-            { producto: "Reglas", vendidos: 200},
-            { producto: "Borradores", vendidos: 100}
+            { producto: "Mochilas", vendidos: 140 },
+            { producto: "Reglas", vendidos: 200 },
+            { producto: "Borradores", vendidos: 100 }
         ];
     }
 
@@ -53,18 +50,20 @@ class InformeVentas extends Informe {
 // Informe de inventario
 class InformeInventario extends Informe {
     obtenerDatos() {
-        // Simulación de obtención de datos de inventario
         return [
-            { producto: "Cuadernos", stock: 200 },
-            { producto: "Lapiceros", stock: 300 },
-            { producto: "Mochilas", vendidos: 140},
-            { producto: "Reglas", vendidos: 200},
-            { producto: "Borradores", vendidos: 100}
+            { producto: "Cuadernos", stock: 20 },
+            { producto: "Lapiceros", stock: 0 },
+            { producto: "Mochilas", stock: 50 },
+            { producto: "Reglas", stock: 0 },
+            { producto: "Borradores", stock: 10 }
         ];
     }
 
     formatearInforme(datos) {
-        return datos.map(d => `Producto: ${d.producto}, Stock: ${d.stock}`).join('\n');
+        return datos.map(d => {
+            const estado = d.stock > 0 ? "Disponible" : "Desabastecido";
+            return `Producto: ${d.producto}, Stock: ${d.stock}, Estado: ${estado}`;
+        }).join('\n');
     }
 
     exportarInforme(informe) {
@@ -94,4 +93,8 @@ function redirectToInicio() {
 
 function redirectToInventario() {
     window.location.href = "inventario.html";
+}
+
+function redirectToInformes() {
+    window.location.href = "informe.html";
 }
