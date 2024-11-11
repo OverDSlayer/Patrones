@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.button {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.report {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+.sidebar { /*ampliacion de la barra */ 
+    width: 20%;
+    background-color: #2E3A59;
+    color: #fff;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    position: fixed; /* Mantener la barra lateral fija */
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+.menu-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #2E3A59;
+    color: #fdf5f5;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    z-index: 1000; /* Asegura que el botón esté encima del contenido */
+}
+.sidebar { /*ampliacion de la barra */ 
+    width: 20%;
+    background-color: #2E3A59;
+    color: #fff;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    position: fixed; /* Mantener la barra lateral fija */
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+/* Clase para ocultar el menú */
+.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul { /*contenido de la barra*/
+    list-style: none;
+    font-size: 18px;
+    padding: 10px;
+    color: #fffdfd; /* Color de la letra */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar li {
+    padding: 20px;
+    cursor: pointer;
+}

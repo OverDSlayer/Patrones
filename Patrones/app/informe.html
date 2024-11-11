@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generación de Informes</title>
+    <link rel="stylesheet" href="informe.css">
+</head>
+<body>
+    <div class="dashboard">
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+        <aside class="sidebar hidden" id="sidebar">
+            <h2>Menú</h2>
+            <ul>
+                <li onclick="redirectToInicio()">Inicio</li>
+                <li onclick="redirectToInformes()">Informes</li>
+                <li>Inventario</li>
+                <li>Ventas</li>
+                <li>Configuración</li>
+            </ul>
+        </aside>
+    </div>
+    <div class="container">
+        <h1>Generación de Informes</h1>
+        <p>Selecciona el tipo de informe que deseas generar:</p>
+
+        <button class="button" onclick="generarInforme('ventas')">Generar Informe de Ventas</button>
+        <button class="button" onclick="generarInforme('inventario')">Generar Informe de Inventario</button>
+
+        <div id="reportContainer" class="report">
+            <h3>Informe Generado</h3>
+            <pre id="reportOutput">Aquí se mostrará el informe.</pre>
+        </div>
+    </div>
+
+    <script src="informe.js"></script>
+</body>
+</html>

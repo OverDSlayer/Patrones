@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+
+.menu-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #2E3A59;
+    color: #fdf5f5;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    z-index: 1000; /* Asegura que el botón esté encima del contenido */
+}
+
+.sidebar { /*ampliacion de la barra */ 
+    width: 20%;
+    background-color: #2E3A59;
+    color: #fff;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    position: fixed; /* Mantener la barra lateral fija */
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+/* Clase para ocultar el menú */
+.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul { /*contenido de la barra*/
+    list-style: none;
+    font-size: 18px;
+    padding: 10px;
+    color: #fffdfd; /* Color de la letra */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar li {
+    padding: 20px;
+    cursor: pointer;
+}
+
+.main-content {
+    width: 100%;
+    margin-left: 20%;
+    padding: 20px;
+    background-color: #f4f4f9;
+    transition: margin-left 0.3s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    background-color: #2E3A59;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.header-item {
+    color: #fdfdfd;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.data-panels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.bar-chart, .pie-charts {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.bar-chart { /*reduce el tamaño de cuadro de top de productos vendidos*/
+    width: 60%;
+    align-items: center;
+}
+
+.pie-charts { /*columna de la derecha*/
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 35%;
+    max-width: 600px; /* Ajusta según sea necesario */
+    height: 400px; /* O ajusta el alto según lo desees */
+}
+.pie-chart {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+}
+
+
+.panel-almacen{
+    width: 100%;
+    background-color: #fff;
+}
+
+.almacen-container {
+    text-align: center;/* Centra el texto */
+    margin-top: 40px; 
+    margin-bottom: 20px; /* Agrega un espacio debajo del texto */
+}
+
+.almacen-container h2 {
+    margin: 0; /* Elimina cualquier margen adicional alrededor del título */
+    padding: 10px 0; /* Añade un poco de espacio arriba y abajo del texto */
+}
+.icon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.icon-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff; /* Fondo del botón */
+    border: 1px solid #fff8f8;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.icon-button:hover {
+    background-color: #e0e0e0;
+}
+
+.icon-button i {
+    font-size: 40px; /* Tamaño del icono */
+    margin-bottom: 5px;
+    color: #0c0b0b; /* Color del icono */
+}
+
+.icon-button p {
+    margin: 0;
+    font-size: 12px;
+}
+
+
+
+/* Estilos para dispositivos pequeños */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70%;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}
+

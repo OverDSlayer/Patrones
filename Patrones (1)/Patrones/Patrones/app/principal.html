@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard con Gráfico de Barras Dinámico</title>
+    <link rel="stylesheet" href="principal.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Botón para desplegar/ocultar el menú -->
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+        
+        <!-- Menú lateral -->
+        <aside class="sidebar hidden" id="sidebar">
+            <h2></h2>
+            <ul>
+                <li>Inicio</li>
+                <li>Informes</li>
+                <li>Inventario</li>
+                <li>Ventas</li>
+                <li>Configuración</li>
+            </ul>
+        </aside>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <!-- Cabecera -->
+            <header class="header">
+                <div class="header-item">Producción total: $2,873,942</div>
+                <div class="header-item">Ingreso mensual: $3,181,700</div>
+                <div class="header-item">Costo total: $307,758</div>
+            </header>
+
+            <!-- Panel de gráficos -->
+            <div class="data-panels">
+                <div class="bar-chart">
+                    <h3>Top Productos más Vendidos</h3>
+                    <div id="chartContainer">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+                <div class="pie-charts">
+                    <div class="pie-chart">
+                        <h3>Total Entradas</h3>
+                        <div class="chart">[Gráfico circular]</div>
+                    </div>
+                    <div class="pie-chart">
+                        <h3>Total Movimientos</h3>
+                        <div class="chart">[Gráfico circular]</div>
+                    </div>
+                </div>
+            </div>
+
+           <!--Almacen-->
+           <div class="panel-almacen">
+            <div class="almacen-container">
+                <h2>Almacén</h2>
+            </div>
+            </div>
+         <div class="icon-container">
+                <button class="icon-button">
+                    <i class="fa-solid fa-book"></i>
+                    <p>libros</p>
+                </button>
+                <button class="icon-button">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <p>Productos</p>
+                </button>
+                <!-- Agrega más iconos como necesites -->
+            </div>
+            
+
+            <!-- Contenedor para los detalles del producto -->
+            <div id="detailsContainer" style="display:none; padding: 20px;">
+                <h3>Detalles del Producto</h3>
+                <p id="details"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="principal.js"></script>
+</body>
+</html>
