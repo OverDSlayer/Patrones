@@ -33,3 +33,11 @@ function editProduct(id) {
     // Código para editar un producto en el inventario
     alert("Función para editar el producto con ID: " + id);
 }
+
+function redirectToInicio() {
+    window.location.href = "principal.html";
+}
+
+function redirectToInforme() {
+    window.location.href = "informe.html";
+}

@@ -91,3 +91,7 @@ function generarInforme(tipo) {
 function redirectToInicio() {
     window.location.href = "principal.html";
 }
+
+function redirectToInventario() {
+    window.location.href = "inventario.html";
+}
