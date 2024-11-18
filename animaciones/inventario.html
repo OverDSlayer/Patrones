@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="inventario.css">
+    <link rel="stylesheet" href="/index.html">
+</head>
+<body>
+    <div class="container">
+        <!-- Botones de categorías -->
+        <div class="categories">
+            <button class="category" onclick="showCategory('writing')">Material de Escritura</button>
+            <button class="category" onclick="showCategory('art')">Material de Arte y Manualidades</button>
+            <button class="category" onclick="showCategory('accessories')">Accesorios de Escritura</button>
+            <button class="category" onclick="showCategory('stationery')">Papelería</button>
+            <button class="category" onclick="showCategory('measurement')">Instrumentos de Medición</button>
+            <button class="category" onclick="showCategory('organization')">Material Organizativo</button>
+        </div>
+    </div>
+        <!-- Imágenes de productos -->
+        <div id="products" class="products">
+            <!-- Aquí se mostrarán las imágenes de los productos según la categoría -->
+        </div>
+
+        <!-- Tabla de detalles de productos -->
+        <div id="productDetails" class="product-details">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Marca</th>
+                        <th>Precio de venta</th>
+                        <th>Colores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se agregarán los detalles de los productos -->
+                </tbody>
+            </table>
+        </div>
+    
+
+    <script src="inventario.js"></script>
+</body>
+</html>
