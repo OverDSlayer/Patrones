@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="ventas.css">
+
+    <title>Ventas</title>
 </head>
 <body>
     <div class="barra-lateral">
@@ -31,13 +32,13 @@
                         <span>Ventas</span>
                     </a>
                 </li>
-                <li>
+                <li >
                     <a href="#">
                         <ion-icon name="bag-handle-outline"></ion-icon>
                         <span>Compras</span>
                     </a>
                 </li>
-                <li>
+                <li id="proveedores" onclick="navigateToFile(this.id)">
                     <a href="#">
                         <ion-icon name="pencil-outline"></ion-icon>
                         <span>Proveedores</span>
@@ -79,9 +80,41 @@
 
         </div>
     </div>
+    <main>
+        <section class="registro">
+          <h2>Registrar Venta</h2>
+          <form id="registro-form">
+            <div class="form-group">
+              <label for="fecha">Fecha:</label>
+              <input type="date" id="fecha" required>
+            </div>
+            <div class="form-group">
+              <label for="monto">Monto:</label>
+              <input type="number" id="monto" placeholder="Ingrese el monto" required>
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripción:</label>
+              <textarea id="descripcion" rows="3" placeholder="Descripción de la venta"></textarea>
+            </div>
+            <button type="submit">Registrar</button>
+          </form>
+        </section>
+    
+        <section class="consulta">
+          <h2>Consultar Ventas</h2>
+          <div class="filtros">
+            <button id="diarias">Diarias</button>
+            <button id="mensuales">Mensuales</button>
+            <button id="personalizadas">Personalizadas</button>
+          </div>
+          <div id="resultados" class="resultados">
+            <p>Seleccione un filtro para mostrar resultados.</p>
+          </div>
+        </section>
+      </main>
+    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <script src="/index.js"></script>
+    <script src="ventas.js"></script>
 </body>
 </html>
