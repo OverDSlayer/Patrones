@@ -1,6 +1,6 @@
 function navigateToFile(id) {
     const files = {
-        inventario: "../animaciones/inventario.html",
+        inventario: "../inventario/inven.html",
         ventas: "../ventas/ventas.html",
         compras: "../compras/compras.html",
         proveedores: "../proveedores/proveedores.html",

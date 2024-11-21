@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ventas</title>
     <link rel="stylesheet" href="ventas.css">
-
-    <title>Ventas</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="barra-lateral">
         <div class="nombre-pagina">
@@ -19,27 +23,26 @@
         </button>
         <nav class="navegacion">
             <ul>
-                
                 <li id="inventario" onclick="navigateToFile(this.id)">
-                    <a href="#">
+                    <a href="../inventario/inven.html">
                         <ion-icon name="logo-dropbox"></ion-icon>
                         <span>Inventario</span>
                     </a>
                 </li>
                 <li id="ventas" onclick="navigateToFile(this.id)">
-                    <a href="#">
+                    <a href="../ventas/ventas.html">
                         <ion-icon name="cash-outline"></ion-icon>
                         <span>Ventas</span>
                     </a>
                 </li>
-                <li >
+                <li>
                     <a href="#">
                         <ion-icon name="bag-handle-outline"></ion-icon>
                         <span>Compras</span>
                     </a>
                 </li>
                 <li id="proveedores" onclick="navigateToFile(this.id)">
-                    <a href="#">
+                    <a href="../proveedores/proveedores.html">
                         <ion-icon name="pencil-outline"></ion-icon>
                         <span>Proveedores</span>
                     </a>
@@ -73,48 +76,72 @@
             </div>
             <div class="switch">
                 <div class="base">
-                    <div class="circulo">
-                    </div>
+                    <div class="circulo"></div>
                 </div>
             </div>
-
         </div>
     </div>
-    <main>
-        <section class="registro">
-          <h2>Registrar Venta</h2>
-          <form id="registro-form">
-            <div class="form-group">
-              <label for="fecha">Fecha:</label>
-              <input type="date" id="fecha" required>
-            </div>
-            <div class="form-group">
-              <label for="monto">Monto:</label>
-              <input type="number" id="monto" placeholder="Ingrese el monto" required>
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Descripción:</label>
-              <textarea id="descripcion" rows="3" placeholder="Descripción de la venta"></textarea>
-            </div>
-            <button type="submit">Registrar</button>
-          </form>
-        </section>
-    
-        <section class="consulta">
-          <h2>Consultar Ventas</h2>
-          <div class="filtros">
-            <button id="diarias">Diarias</button>
-            <button id="mensuales">Mensuales</button>
-            <button id="personalizadas">Personalizadas</button>
-          </div>
-          <div id="resultados" class="resultados">
-            <p>Seleccione un filtro para mostrar resultados.</p>
-          </div>
-        </section>
-      </main>
-    
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <header>
+        <h1>Gestión de Ventas</h1>
+    </header>
+    <div class="container">
+
+        <!-- Formulario de Registro de Ventas -->
+        <div class="form-section">
+            <h2>Registrar Venta</h2>
+            <form id="registro-venta">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <label for="monto">Monto:</label>
+                <input type="number" id="monto" name="monto" step="0.01" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="3" placeholder="Describe qué se vendió"></textarea>
+
+                <button type="submit">Registrar Venta</button>
+            </form>
+        </div>
+
+        <!-- Formulario de Consulta de Ventas -->
+        <div class="form-section">
+            <h2>Consulta de Ventas</h2>
+            <form id="consulta-ventas">
+                <label for="tipo-consulta">Tipo de Consulta:</label>
+                <select id="tipo-consulta" name="tipo-consulta" required>
+                    <option value="diaria">Diaria</option>
+                    <option value="mensual">Mensual</option>
+                    <option value="personalizada">Personalizada</option>
+                </select>
+
+                <label for="fecha-inicio">Fecha Inicio (solo para consulta personalizada):</label>
+                <input type="date" id="fecha-inicio" name="fecha-inicio">
+
+                <label for="fecha-fin">Fecha Fin (solo para consulta personalizada):</label>
+                <input type="date" id="fecha-fin" name="fecha-fin">
+
+                <button type="submit">Consultar</button>
+            </form>
+        </div>
+
+        <!-- Resultados -->
+        <div class="results">
+            <h2>Resultados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Monto</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Resultados dinámicos -->
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script src="ventas.js"></script>
 </body>
+
 </html>

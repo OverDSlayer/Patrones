@@ -17,3 +17,21 @@ cloud.addEventListener("click",()=>{
     });
 
 });
+function navigateToFile(id) {
+    const files = {
+        inventario: "../inventario/inven.html",
+        ventas: "../ventas/ventas.html",
+        compras: "../compras/compras.html",
+        proveedores: "../proveedores/proveedores.html",
+        clientes: "../clientes/clientes.html",
+        reportes: "../reportes/reportes.html",
+        equipo: "../equipo/equipo.html",
+    };
+
+    const file = files[id];
+    if (file) {
+        window.location.href = file; // Redirige al archivo correspondiente
+    } else {
+        console.error(`No se encontró un archivo para el ID "${id}".`);
+    }
+}

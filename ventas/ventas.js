@@ -1,82 +1,110 @@
-function navigateToFile(id) {
-    const files = {
-        inventario: "../animaciones/inventario.html",
-        ventas: "../ventas/ventas.html",
-        compras: "../compras/compras.html",
-        proveedores: "../proveedores/proveedores.html",
-        clientes: "../clientes/clientes.html",
-        reportes: "../reportes/reportes.html",
-        equipo: "../equipo/equipo.html",
-    };
+const cloud = document.getElementById("cloud");
+const barralateral = document.querySelector(".barra-lateral");
+const spans = document.querySelectorAll("span");
+const palanca = document.querySelector(".switch");
+const circulo = document.querySelector(".circulo");
 
-    const file = files[id];
-    if (file) {
-        window.location.href = file; // Redirige al archivo correspondiente
-    } else {
-        console.error(`No se encontró un archivo para el ID "${id}".`);
-    }
+// Modo oscuro
+palanca.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    circulo.classList.toggle("prendido");
+});
+
+// Minimizar barra lateral
+cloud.addEventListener("click", () => {
+    barralateral.classList.toggle("mini-barra-lateral");
+    spans.forEach((span) => {
+        span.classList.toggle("oculto");
+    });
+});
+
+ // JS del sistema de ventas
+ class VentasFacade {
+  constructor() {
+      this.ventas = [];
+  }
+
+  registrarVenta(fecha, monto, descripcion) {
+      this.ventas.push({
+          fecha: new Date(fecha),
+          monto: parseFloat(monto),
+          descripcion
+      });
+  }
+
+  consultarVentas(tipo, fechaInicio = null, fechaFin = null) {
+      const hoy = new Date();
+      switch (tipo) {
+          case "diaria":
+              return this.ventas.filter((venta) =>
+                  this._esMismaFecha(venta.fecha, hoy)
+              );
+          case "mensual":
+              return this.ventas.filter(
+                  (venta) =>
+                      venta.fecha.getFullYear() === hoy.getFullYear() &&
+                      venta.fecha.getMonth() === hoy.getMonth()
+              );
+          case "personalizada":
+              return this.ventas.filter(
+                  (venta) =>
+                      venta.fecha >= new Date(fechaInicio) &&
+                      venta.fecha <= new Date(fechaFin)
+              );
+          default:
+              return [];
+      }
+  }
+
+  _esMismaFecha(fecha1, fecha2) {
+      return (
+          fecha1.getDate() === fecha2.getDate() &&
+          fecha1.getMonth() === fecha2.getMonth() &&
+          fecha1.getFullYear() === fecha2.getFullYear()
+      );
+  }
 }
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("registro-form");
-    const resultados = document.getElementById("resultados");
-  
-    const ventas = [];
-  
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-  
-      const fecha = document.getElementById("fecha").value;
-      const monto = document.getElementById("monto").value;
-      const descripcion = document.getElementById("descripcion").value;
-  
-      if (!fecha || !monto) {
-        alert("Por favor, complete los campos obligatorios.");
-        return;
-      }
-  
-      ventas.push({ fecha, monto, descripcion });
-      alert("Venta registrada con éxito.");
-      form.reset();
-    });
-  
-    document.getElementById("diarias").addEventListener("click", () => {
-      const hoy = new Date().toISOString().split("T")[0];
-      const ventasHoy = ventas.filter((venta) => venta.fecha === hoy);
-      mostrarResultados(ventasHoy, "Ventas Diarias");
-    });
-  
-    document.getElementById("mensuales").addEventListener("click", () => {
-      const mesActual = new Date().toISOString().slice(0, 7);
-      const ventasMensuales = ventas.filter(
-        (venta) => venta.fecha.slice(0, 7) === mesActual
-      );
-      mostrarResultados(ventasMensuales, "Ventas Mensuales");
-    });
-  
-    document.getElementById("personalizadas").addEventListener("click", () => {
-      const fechaInicio = prompt("Ingrese la fecha de inicio (YYYY-MM-DD):");
-      const fechaFin = prompt("Ingrese la fecha de fin (YYYY-MM-DD):");
-      const ventasPersonalizadas = ventas.filter(
-        (venta) => venta.fecha >= fechaInicio && venta.fecha <= fechaFin
-      );
-      mostrarResultados(ventasPersonalizadas, "Ventas Personalizadas");
-    });
-  
-    function mostrarResultados(data, titulo) {
-      resultados.innerHTML = `<h3>${titulo}</h3>`;
-      if (data.length === 0) {
-        resultados.innerHTML += "<p>No se encontraron resultados.</p>";
-      } else {
-        data.forEach((venta) => {
-          resultados.innerHTML += `
-            <div class="venta">
-              <p><strong>Fecha:</strong> ${venta.fecha}</p>
-              <p><strong>Monto:</strong> S/ ${venta.monto}</p>
-              <p><strong>Descripción:</strong> ${venta.descripcion || "N/A"}</p>
-            </div>
+
+const ventasFacade = new VentasFacade();
+
+// Registro de ventas
+document.getElementById("registro-venta").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const fecha = document.getElementById("fecha").value;
+  const monto = document.getElementById("monto").value;
+  const descripcion = document.getElementById("descripcion").value;
+
+  ventasFacade.registrarVenta(fecha, monto, descripcion);
+  alert("¡Venta registrada exitosamente!");
+  e.target.reset();
+});
+
+// Consulta de ventas
+document.getElementById("consulta-ventas").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const tipo = document.getElementById("tipo-consulta").value;
+  const fechaInicio = document.getElementById("fecha-inicio").value || null;
+  const fechaFin = document.getElementById("fecha-fin").value || null;
+
+  const resultados = ventasFacade.consultarVentas(tipo, fechaInicio, fechaFin);
+  const tablaResultados = document.querySelector(".results tbody");
+  tablaResultados.innerHTML = "";
+
+  if (resultados.length === 0) {
+      tablaResultados.innerHTML = `
+          <tr>
+              <td colspan="3">No se encontraron ventas.</td>
+          </tr>
+      `;
+  } else {
+      resultados.forEach((venta) => {
+          const fila = document.createElement("tr");
+          fila.innerHTML = `
+              <td>${venta.fecha.toLocaleDateString()}</td>
+              <td>S/${venta.monto.toFixed(2)}</td>
+              <td>${venta.descripcion}</td>
           `;
-        });
-      }
-    }
-  });
-  
+          tablaResultados.appendChild(fila);
+      });
+  }
+});

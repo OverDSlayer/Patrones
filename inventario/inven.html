@@ -24,13 +24,13 @@
         </button>
         <nav class="navegacion">
             <ul>
-                <li>
+                <li id="inventario" onclick="navigateToFile(this.id)">
                     <a href="inven.html">
                         <ion-icon name="logo-dropbox"></ion-icon>
                         <span>Inventario</span>
                     </a>
                 </li>
-                <li>
+                <li id="ventas" onclick="navigateToFile(this.id)">
                     <a href="#">
                         <ion-icon name="cash-outline"></ion-icon>
                         <span>Ventas</span>
@@ -42,7 +42,7 @@
                         <span>Compras</span>
                     </a>
                 </li>
-                <li>
+                <li id="proveedores" onclick="navigateToFile(this.id)">
                     <a href="#">
                         <ion-icon name="pencil-outline"></ion-icon>
                         <span>Proveedores</span>
