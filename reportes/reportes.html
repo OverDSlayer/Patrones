@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../reportes/reportes.css">
+    <link rel="stylesheet" href="../nav_bar/index.css">
+    <title>Reportes - Pluma y Papel</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="barra-lateral">
+        <div class="nombre-pagina">
+            <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+            <span>Pluma y Papel</span>
+        </div>
+        <button class="boton">
+            <ion-icon name="add-outline"></ion-icon>
+            <span>Create new</span>
+        </button>
+        <nav class="navegacion">
+            <ul>
+                
+                <li>
+                    <a href="#">
+                        <ion-icon name="logo-dropbox"></ion-icon>
+                        <span>Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="cash-outline"></ion-icon>
+                        <span>Ventas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="bag-handle-outline"></ion-icon>
+                        <span>Compras</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="pencil-outline"></ion-icon>
+                        <span>Proveedores</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                        <span>Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <ion-icon name="heart-outline"></ion-icon>
+                        <span>Equipo</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="linea"></div>
+        <div class="modo-oscuro">
+            <div class="info">
+                <ion-icon name="moon-outline"></ion-icon>
+                <span>Dark Mode</span>
+            </div>
+            <div class="switch">
+                <div class="base">
+                    <div class="circulo">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Contenido principal -->
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <h2>Reportes</h2>
+                <p>Accede a los reportes detallados de tus ventas y obtén insights valiosos para tu negocio.</p>
+            </div>
+        </div>
+
+        <div class="card--container">
+            <h3 class="main--title">Estadísticas de Ventas</h3>
+            <form id="reportForm">
+                <input type="text" id="month" placeholder="Nombre del Mes (Enero, Febrero, ...)" required />
+                <input type="number" id="sales" placeholder="Ventas ($)" required />
+                <button type="submit">Agregar Reporte</button>
+            </form>
+
+            <!-- Botón para eliminar todos los reportes -->
+            <button id="clearReportsBtn" class="boton">Limpiar Todos los Reportes</button>
+
+            <!-- Reportes -->
+            <div id="reportList">
+                <!-- Reporte de Ingresos Totales -->
+                <div class="report-section">
+                    <h4>Ingresos Totales</h4>
+                    <p id="totalIncome">Esperando datos...</p>
+                    <p class="description">Este reporte muestra el total acumulado de todas las ventas realizadas hasta el momento.</p>
+                </div>
+
+                <!-- Reporte de Ventas por Mes -->
+                <div class="report-section">
+                    <h4>Ventas por Mes</h4>
+                    <canvas id="monthlySalesChart"></canvas>
+                    <p class="description">Gráfico de barras que muestra las ventas de cada mes del año.</p>
+                </div>
+
+                <!-- Reporte de Crecimiento de Ventas -->
+                <div class="report-section">
+                    <h4>Porcentaje de Crecimiento</h4>
+                    <p id="growthPercentage">Esperando datos...</p>
+                    <p class="description">Muestra el porcentaje de aumento o disminución de las ventas de un mes a otro.</p>
+                </div>
+
+                <!-- Reporte de Productos Más Vendidos -->
+                <div class="report-section">
+                    <h4>Productos Más Vendidos</h4>
+                    <ul id="topProducts">
+                        <!-- Los productos serán listados aquí -->
+                    </ul>
+                    <p class="description">Lista de los productos más vendidos en el período.</p>
+                </div>
+            </div>
+
+            <canvas id="salesChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script src="../reportes/reportes.js"></script>
+    <script src="../nav_bar/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

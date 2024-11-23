@@ -1,0 +1,138 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F7F4F3;
+    color: #020202;
+    margin: 0;
+    display: flex;
+}
+
+/* Barra lateral */
+.barra-lateral {
+    width: 250px;
+    background-color: #0D324D;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    padding-top: 20px;
+}
+
+.barra-lateral .nombre-pagina {
+    padding: 20px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    color: #F7F4F3;
+}
+
+.barra-lateral .navegacion a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+.barra-lateral .navegacion a:hover {
+    background-color: #7F5A83;
+}
+
+.main--content {
+    margin-left: 250px;
+    padding: 20px;
+    width: 100%;
+}
+
+.header--title h2 {
+    font-size: 2rem;
+    color: #020202;
+}
+
+.card--container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main--title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+#clientsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#clientsTable th, #clientsTable td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#clientsTable th {
+    background-color: #0D324D;
+    color: white;
+}
+
+#clientsTable td {
+    background-color: #F7F4F3;
+}
+
+.boton {
+    background-color: #7F5A83;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.boton:hover {
+    background-color: #0D324D;
+}
+
+.client-form {
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.client-form input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #A188A6;
+}
+
+.client-form button {
+    background-color: #0D324D;
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.client-form button:hover {
+    background-color: #7F5A83;
+}
+
+#messageContainer {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #28a745;
+}
+
+
