@@ -1,40 +1,24 @@
 const cloud = document.getElementById("cloud");
-const barralateral = document.querySelector(".barra-lateral");
+const barraLateral = document.querySelector(".barra-lateral");
 const spans = document.querySelectorAll("span");
 const palanca = document.querySelector(".switch");
 const circulo = document.querySelector(".circulo");
 
-// Modo oscuro
 palanca.addEventListener("click", () => {
     let body = document.body;
     body.classList.toggle("dark-mode");
     circulo.classList.toggle("prendido");
 });
 
-// Mini barra lateral
 cloud.addEventListener("click", () => {
-    barralateral.classList.toggle("mini-barra-lateral");
+    barraLateral.classList.toggle("mini-barra-lateral");
     spans.forEach((span) => {
         span.classList.toggle("oculto");
     });
+
+    // Cambiar el margen de la página principal
+    document.body.classList.toggle("mini-barra", barraLateral.classList.contains("mini-barra-lateral"));
 });
 
 
-function navigateToFile(id) {
-    const files = {
-        inventario: "../animaciones/inventario.html",
-        ventas: "../ventas/ventas.html",
-        compras: "../compras/compras.html",
-        proveedores: "../proveedores/proveedores.html",
-        clientes: "../clientes/clientes.html",
-        reportes: "../reportes/reportes.html",
-        equipo: "../equipo/equipo.html",
-    };
 
-    const file = files[id];
-    if (file) {
-        window.location.href = file; // Redirige al archivo correspondiente
-    } else {
-        console.error(`No se encontró un archivo para el ID "${id}".`);
-    }
-}
