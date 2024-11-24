@@ -1,18 +1,20 @@
-// JS del sistema de ventas
 class VentasFacade {
     constructor() {
-        this.ventas = [];
+        this.ventas = this._cargarVentasDeLocalStorage();
     }
 
-    registrarVenta(fecha, id_producto, monto) {
-        if (!fecha || isNaN(id_producto) || isNaN(monto)) {
+    registrarVenta(fecha, id_producto, monto, cantidad) {
+        if (!fecha || isNaN(id_producto) || isNaN(monto) || isNaN(cantidad)) {
             throw new Error("Datos inválidos para registrar la venta.");
         }
-        this.ventas.push({
+        const nuevaVenta = {
             fecha: new Date(fecha),
             id_producto: parseInt(id_producto),
             monto: parseFloat(monto),
-        });
+            cantidad: parseInt(cantidad),
+        };
+        this.ventas.push(nuevaVenta);
+        this._guardarVentasEnLocalStorage();
     }
 
     consultarVentas(tipo, fechaInicio = null, fechaFin = null) {
@@ -49,6 +51,21 @@ class VentasFacade {
             fecha1.getFullYear() === fecha2.getFullYear()
         );
     }
+
+    _guardarVentasEnLocalStorage() {
+        localStorage.setItem("ventas", JSON.stringify(this.ventas));
+    }
+
+    _cargarVentasDeLocalStorage() {
+        const ventasGuardadas = localStorage.getItem("ventas");
+        if (ventasGuardadas) {
+            return JSON.parse(ventasGuardadas).map((venta) => ({
+                ...venta,
+                fecha: new Date(venta.fecha), // Reconstruimos los objetos Date
+            }));
+        }
+        return [];
+    }
 }
 
 const ventasFacade = new VentasFacade();
@@ -59,9 +76,10 @@ document.getElementById("registro-venta").addEventListener("submit", (e) => {
     const fecha = document.getElementById("fecha").value;
     const id_producto = document.getElementById("id_producto").value;
     const monto = document.getElementById("monto").value;
+    const cantidad = document.getElementById("cantidad").value;
 
     try {
-        ventasFacade.registrarVenta(fecha, id_producto, monto);
+        ventasFacade.registrarVenta(fecha, id_producto, monto, cantidad);
         alert("¡Venta registrada exitosamente!");
         e.target.reset();
     } catch (error) {
@@ -94,6 +112,7 @@ document.getElementById("consulta-ventas").addEventListener("submit", (e) => {
                     <td>${venta.fecha.toLocaleDateString()}</td>
                     <td>${venta.id_producto}</td>
                     <td>S/${venta.monto.toFixed(2)}</td>
+                    <td>${venta.cantidad}</td>
                 `;
                 tablaResultados.appendChild(fila);
             });
