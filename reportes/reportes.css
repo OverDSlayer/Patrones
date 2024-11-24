@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 /* Estilo general */
+html, body {
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    margin: 0;
+    background: #ebe9e9; /* Fondo global que coincida con el fondo de .main--content */
+  }
+
 body {
     font-family: "Outfit", sans-serif;
     display: flex;
@@ -17,6 +23,7 @@ body {
 }
 .main--content {
     position: relative;
+    background: #ebe9e9;
     width: 100%;
     padding: 1rem;
     transition: margin-left 0.5s ease;
@@ -33,20 +40,70 @@ body {
 }
 
 .header--title {
-    color: #172a3a;
-    font-size: 20px;
+    color: rgb(7, 75, 112);
+    font-size: 28px;
 }
 
 .card--container {
+    margin-top: 20px;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(10, 184, 132, 0.1);
+}
+/* Personalizar el campo de texto del mes */
+#month {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#month:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Personalizar el campo de número de ventas */
+#sales {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#sales:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Personalizar el botón */
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #5a8bc0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0D324D;
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 /* Botones */
 .boton {
-    background-color: #7F5A83;
+    background-color: #1e8b74;
     color: white;
     padding: 12px 20px;
     border: none;

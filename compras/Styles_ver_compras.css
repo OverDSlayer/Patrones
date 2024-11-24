@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    background-color: #F7F4F3; /* Blanco pálido fuera del contenedor */
     color: #333;
 }
 
@@ -11,7 +11,7 @@ body {
     max-width: 900px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #ffffff; /* Fondo blanco del contenedor */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -31,7 +31,7 @@ h1 {
     margin-top: 20px;
 }
 
-/* Estilo de las tarjetas */
+/* Estilo de las tarjetas de compra */
 .compra-card {
     background-color: #f9f9f9;
     padding: 15px;
@@ -56,44 +56,78 @@ h1 {
     gap: 10px;
 }
 
-/* Botones */
+/* Total de Compras */
+.total-container {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Contenedor de botones de acción */
 .actions {
     display: flex;
     justify-content: space-around;
     margin-top: 30px;
 }
 
+/* Estilo de los botones */
 .btn {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
+    background-color: #3e5c44; /* Verde oscuro medio */
+    color: white; /* Texto blanco */
+    padding: 12px 25px;
+    border: 1px solid #3e5c44; /* Borde verde oscuro */
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease; /* Añadido para la animación */
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #2a4d37; /* Verde más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Efecto de aumento suave */
 }
 
+/* Estilo del botón de eliminar */
 .eliminar-compra {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 6px 10px;
+    background-color: #ff4d4d; /* Rojo para eliminar */
+    color: white; /* Texto blanco */
+    border: 1px solid #ff4d4d; /* Borde rojo */
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.2s ease; /* Animación para eliminar */
 }
 
 .eliminar-compra:hover {
-    background-color: #e60000;
+    background-color: #e60000; /* Rojo más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Efecto de aumento suave */
 }
 
-/* Total de Compras */
-.total-container {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 18px;
+/* Contenedor para los botones de "Descargar" y "Volver" */
+.action-buttons-container {
+    background-color: #3e5c44; /* Verde oscuro medio */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.action-buttons-container button {
+    background-color: #3e5c44; /* Verde oscuro medio */
+    color: white; /* Texto blanco */
+    padding: 12px 25px;
+    border: 1px solid #3e5c44; /* Borde verde oscuro */
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease; /* Animación de transición */
+}
+
+.action-buttons-container button:hover {
+    background-color: #2a4d37; /* Verde más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Efecto de aumento suave */
 }

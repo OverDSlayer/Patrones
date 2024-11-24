@@ -191,6 +191,3 @@ function limpiarCampos() {
     document.getElementById("total-igv").value = "";
     document.getElementById("total-pagar").value = "";
 }
-function volver() {
-    window.history.back();  // Vuelve a la página anterior en el historial
-}

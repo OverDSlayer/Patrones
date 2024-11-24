@@ -1,4 +1,9 @@
 /* Estilo general */
+html, body {
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    margin: 0;
+    background: #ebe9e9; /* Fondo global que coincida con el fondo de .main--content */
+}
 body {
     font-family: "Outfit", sans-serif;
     display: flex;
@@ -6,9 +11,11 @@ body {
     align-items: normal;
     margin: 0;
     transition: margin-left 0.5s ease; 
+    background-color: #ebe9e9;
 }
 .barra-lateral.mini-barra-lateral + .main--content {
     margin-left: 80px; 
+    
 }
 .barra-lateral:not(.mini-barra-lateral) + .main--content {
     margin-left: 290px; 
@@ -18,21 +25,23 @@ body {
     width: 100%;
     padding: 1rem;
     transition: margin-left 0.5s ease;
+    background: #ebe9e9;
+    margin: 0;
 }
 .header--wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background: #ffffff;
+    background: #fff;
     border-radius: 10px;
     padding: 9px 2rem;
     margin-bottom: 1.5rem;
 }
 
 .header--title {
-    color: #172a3a;
-    font-size: 20px;
+    color: rgb(7, 75, 112);;
+    font-size: 28px;
 }
 
 .container {

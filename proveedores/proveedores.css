@@ -1,4 +1,9 @@
 /* Estilo general */
+html, body {
+  height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+  margin: 0;
+  background: #ebe9e9; /* Fondo global que coincida con el fondo de .main--content */
+}
 body {
   font-family: "Outfit", sans-serif;
   display: flex;
@@ -18,6 +23,7 @@ body {
   width: 100%;
   padding: 1rem;
   transition: margin-left 0.5s ease;
+  background: #ebe9e9;
 }
 .header--wrapper {
   display: flex;
@@ -31,8 +37,8 @@ body {
 }
 
 .header--title {
-  color: #172a3a;
-  font-size: 20px;
+  color: rgb(7, 75, 112);
+  font-size: 28px;
 }
 
 .container {
@@ -114,4 +120,8 @@ button:hover {
       font-size: 0.9rem;
       padding: 8px;
   }
+}
+
+.list-section{
+  color:#172a3a
 }

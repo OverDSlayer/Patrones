@@ -1,102 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Compras</title>
     <link rel="stylesheet" href="styles_ingresar_compras.css">
+    <link rel="stylesheet" href="../nav_bar/index.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Fechas -->
-        <div class="row">
-            <div class="field-group">
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" required>
-            </div>
-            <div class="field-group">
-                <label for="fecha-documento">Fecha Documento:</label>
-                <input type="date" id="fecha-documento" required>
-            </div>
+    <!-- Barra lateral -->
+    <div class="barra-lateral">
+        <div class="nombre-pagina">
+            <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+            <span>Pluma y Papel</span>
         </div>
+        <button class="boton" onclick="openModal()">
+            <ion-icon name="add-outline"></ion-icon>
+            <span>Create new</span>
+        </button>
+        <nav class="navegacion">
+            <ul>
+                <li id="inventario" onclick="navigateToFile(this.id)">
+                    <a href="../inventario/inven.html">
+                        <ion-icon name="logo-dropbox"></ion-icon>
+                        <span>Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../ventas/ventas.html">
+                        <ion-icon name="cash-outline"></ion-icon>
+                        <span>Ventas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../compras/ingresar_compras.html">
+                        <ion-icon name="bag-handle-outline"></ion-icon>
+                        <span>Compras</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../proveedores/proveedores.html">
+                        <ion-icon name="pencil-outline"></ion-icon>
+                        <span>Proveedores</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../clientes/clientes.html">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../reportes/reportes.html">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                        <span>Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../staff/staff.html">
+                        <ion-icon name="heart-outline"></ion-icon>
+                        <span>Equipo</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="linea"></div>
 
-        <!-- Documento -->
-        <div class="row">
-            <div class="field-group medium">
-                <label for="documento">Documento:</label>
-                <input type="text" id="documento" value="Factura Electrónica" readonly>
+        <div class="modo-oscuro">
+            <div class="info">
+                <ion-icon name="moon-outline"></ion-icon>
+                <span>Dark Mode</span>
             </div>
-            <div class="field-group small">
-                <input type="text" id="serie" placeholder="Serie" required>
-            </div>
-            <div class="field-group small">
-                <input type="text" id="numero" placeholder="Número" required>
-            </div>
-        </div>
-
-        <!-- Proveedor -->
-        <div class="row">
-            <div class="field-group small">
-                <label for="ruc">Proveedor RUC:</label>
-                <input type="text" id="ruc" placeholder="RUC" required>
-            </div>
-            <div class="field-group large">
-                <label for="nombre-proveedor">Nombre del Proveedor:</label>
-                <input type="text" id="nombre-proveedor" placeholder="Nombre del Proveedor" required>
-            </div>
-        </div>
-
-        <!-- Dirección -->
-        <div class="row">
-            <div class="field-group">
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" required>
-            </div>
-        </div>
-
-        <!-- Tabla de Productos -->
-        <div class="products-section">
-            <div class="products-header">
-                <span>Nombre Producto</span>
-                <span>Unidades</span>
-                <span>Costo</span>
-                <span>Total</span>
-            </div>
-            <div id="products-container" class="products-container">
-                <!-- Se agregarán filas de productos aquí -->
-                <div class="product-row">
-                    <input type="text" class="input product-name" placeholder="Producto" required>
-                    <input type="number" class="input product-units" oninput="calculateRowTotal(this)" required>
-                    <input type="number" class="input product-cost" oninput="calculateRowTotal(this)" required>
-                    <input type="number" class="input product-total" readonly>
+            <div class="switch">
+                <div class="base">
+                    <div class="circulo"></div>
                 </div>
             </div>
-            <button class="add-row" type="button" onclick="addRow()">+</button>
-        </div>
-
-        <!-- Totales -->
-        <div class="totals-section">
-            <div>
-                <label for="total-igv">Total IGV (18%):</label>
-                <input type="number" id="total-igv" readonly>
-            </div>
-            <div>
-                <label for="total-sin-igv">Operación Total sin IGV:</label>
-                <input type="number" id="total-sin-igv" readonly>
-            </div>
-            <div>
-                <label for="total-pagar">Total a Pagar:</label>
-                <input type="number" id="total-pagar" readonly>
-            </div>
-        </div>
-
-        <!-- Botones de Acción -->
-        <div class="actions">
-            <button class="submit-button" type="button" onclick="crearRegistro()">Crear Registro</button>
-            <button class="back-button" type="button" onclick="window.history.back()">Volver</button>
         </div>
     </div>
 
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Gestión de</span>
+                <h2>Compras</h2>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Fechas -->
+            <div class="row">
+                <div class="field-group">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" required>
+                </div>
+                <div class="field-group">
+                    <label for="fecha-documento">Fecha Documento:</label>
+                    <input type="date" id="fecha-documento" required>
+                </div>
+            </div>
+
+            <!-- Documento -->
+            <div class="row">
+                <div class="field-group medium">
+                    <label for="documento">Documento:</label>
+                    <input type="text" id="documento" value="Factura Electrónica" readonly>
+                </div>
+                <div class="field-group small">
+                    <input type="text" id="serie" placeholder="Serie" required>
+                </div>
+                <div class="field-group small">
+                    <input type="text" id="numero" placeholder="Número" required>
+                </div>
+            </div>
+
+            <!-- Proveedor -->
+            <div class="row">
+                <div class="field-group small">
+                    <label for="ruc">Proveedor RUC:</label>
+                    <input type="text" id="ruc" placeholder="RUC" required>
+                </div>
+                <div class="field-group large">
+                    <label for="nombre-proveedor">Nombre del Proveedor:</label>
+                    <input type="text" id="nombre-proveedor" placeholder="Nombre del Proveedor" required>
+                </div>
+            </div>
+
+            <!-- Dirección -->
+            <div class="row">
+                <div class="field-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" required>
+                </div>
+            </div>
+
+            <!-- Tabla de Productos -->
+            <div class="products-section">
+                <div class="products-header">
+                    <span>Nombre Producto</span>
+                    <span>Unidades</span>
+                    <span>Costo</span>
+                    <span>Total</span>
+                </div>
+                <div id="products-container" class="products-container">
+                    <!-- Se agregarán filas de productos aquí -->
+                    <div class="product-row">
+                        <input type="text" class="input product-name" placeholder="Producto" required>
+                        <input type="text" class="input product-units" oninput="calculateRowTotal(this)" required>
+                        <input type="text" class="input product-cost" oninput="calculateRowTotal(this)" required>
+                        <input type="text" class="input product-total" readonly>
+                    </div>
+                </div>
+                <button class="add-row" type="button" onclick="addRow()">+</button>
+            </div>
+
+            <!-- Totales -->
+            <div class="totals-section">
+                <div>
+                    <label for="total-igv">Total IGV (18%):</label>
+                    <input type="text" id="total-igv" readonly>
+                </div>
+                <div>
+                    <label for="total-sin-igv">Operación Total sin IGV:</label>
+                    <input type="text" id="total-sin-igv" readonly>
+                </div>
+                <div>
+                    <label for="total-pagar">Total a Pagar:</label>
+                    <input type="text" id="total-pagar" readonly>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="actions">
+                <button class="submit-button" type="button" onclick="crearRegistro()">Crear Registro</button>
+                <button class="view-purchases-button" type="button" onclick="location.href='ver_compras.html'">Ver
+                    Compras</button>
+            </div>
+        </div>
+    </div>
+    <script src="../nav_bar/index.js"></script>
     <script src="java_ingresar_compras.js"></script>
 </body>
+
 </html>

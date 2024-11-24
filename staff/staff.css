@@ -1,5 +1,9 @@
 /* Estilo general */
-
+html, body {
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    margin: 0;
+    background: #ebe9e9; /* Fondo global que coincida con el fondo de .main--content */
+  }
 body {
     font-family: "Outfit", sans-serif;
     display: flex;

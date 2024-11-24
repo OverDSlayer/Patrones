@@ -1,20 +1,52 @@
-body {
-    font-family: 'Arial', sans-serif;
+html, body {
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
     margin: 0;
-    padding: 0;
-    background-color: #f9fafc;
-    color: #333;
-}
-
+    background: #ebe9e9; /* Fondo global que coincida con el fondo de .main--content */
+  }
+  body {
+    font-family: "Outfit", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    margin: 0;
+    transition: margin-left 0.5s ease; 
+  }
+  .barra-lateral.mini-barra-lateral + .main--content {
+    margin-left: 80px; 
+  }
+  .barra-lateral:not(.mini-barra-lateral) + .main--content {
+    margin-left: 290px; 
+  }
+  .main--content {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+    transition: margin-left 0.5s ease;
+    background: #ebe9e9;
+  }
+  .header--wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 9px 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .header--title {
+    color: rgb(7, 75, 112);
+    font-size: 28px;
+  }
 .container {
-    max-width: 1000px;
+    max-width: 100%;
     margin: 20px auto;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 /* Layout and Fields */
 .row {
     display: flex;
@@ -53,7 +85,7 @@ body {
 /* Special Sizes */
 .field-group.small {
     max-width: 100px;
-    flex-grow: 0; /* No se estira más */
+    flex-grow: 0;
 }
 
 .field-group.medium {
@@ -64,23 +96,6 @@ body {
     max-width: 300px;
 }
 
-/* Ajuste de la fila de Documento */
-.row.documento {
-    display: flex;
-    align-items: flex-end; /* Alineación ajustada */
-    gap: 10px;
-}
-
-#documento {
-    flex-grow: 2;
-}
-
-#serie,
-#numero {
-    flex-grow: 1;
-    margin-top: 12px; /* Agregado para bajarlas */
-}
-
 /* Document Section */
 .products-section {
     margin-top: 20px;
@@ -88,13 +103,13 @@ body {
 
 .products-header {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr; /* Alineado con las filas de producto */
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     font-size: 14px;
     font-weight: bold;
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
     background: #f4f4f9;
-    text-align: center; /* Centrar los nombres de las columnas */
+    text-align: center;
 }
 
 .products-container {
@@ -106,42 +121,43 @@ body {
 
 .product-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr; /* Configuración de columnas */
-    gap: 15px; /* Mayor separación entre columnas */
-    align-items: center; /* Centra verticalmente los campos */
-    margin-bottom: 12px; /* Espacio entre filas */
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 .product-row input {
-    padding: 6px; /* Compactar los campos */
-    font-size: 13px; /* Reducir ligeramente el tamaño de fuente */
+    padding: 6px;
+    font-size: 13px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    text-align: center; /* Centrar el texto dentro de los campos */
+    text-align: center;
     width: 100%;
 }
 
-/* Ajustar la columna de "Total" */
 .product-row input.product-total {
-    grid-column: span 1; /* Alineada con las demás columnas */
-    width: 100%; /* Ocupa todo el ancho disponible */
+    grid-column: span 1;
+    width: 100%;
 }
 
+/* Botón de agregar producto */
 .add-row {
     margin-top: 15px;
     padding: 8px 12px;
     font-size: 14px;
     font-weight: 600;
     color: #fff;
-    background-color: #0078d4;
+    background-color: #0D324D ;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .add-row:hover {
-    background-color: #005ea6;
+    background-color: #0D324D ;
+    transform: scale(1.1); /* Agrandamiento ligero */
 }
 
 /* Totals Section */
@@ -177,30 +193,32 @@ body {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background-color: #28a745;
+    background-color: #115221;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .submit-button:hover {
     background-color: #218838;
+    transform: scale(1.1); /* Agrandamiento ligero */
 }
 
-/* Botón de Volver */
-.back-button {
+/* Botón de Ver Compras */
+.view-purchases-button {
     padding: 12px 25px;
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background-color: #f44336;
+    background-color: #0D324D ;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.back-button:hover {
-    background-color: #e53935;
+.view-purchases-button:hover {
+    background-color: #0D324D ;
+    transform: scale(1.1); /* Agrandamiento ligero */
 }
