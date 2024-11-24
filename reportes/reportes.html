@@ -9,18 +9,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!-- Barra lateral -->
     <div class="barra-lateral">
         <div class="nombre-pagina">
             <ion-icon id="cloud" name="cloud-outline"></ion-icon>
             <span>Pluma y Papel</span>
         </div>
-        <button class="boton">
+        <button class="boton" onclick="openModal()">
             <ion-icon name="add-outline"></ion-icon>
             <span>Create new</span>
         </button>
         <nav class="navegacion">
             <ul>
-                <li>
+                <li id="inventario" onclick="navigateToFile(this.id)">
                     <a href="../inventario/inven.html">
                         <ion-icon name="logo-dropbox"></ion-icon>
                         <span>Inventario</span>
@@ -33,31 +34,31 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../compras/compras.html">
                         <ion-icon name="bag-handle-outline"></ion-icon>
                         <span>Compras</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../proveedores/proveedores.html">
                         <ion-icon name="pencil-outline"></ion-icon>
                         <span>Proveedores</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../clientes/clientes.html">
                         <ion-icon name="person-outline"></ion-icon>
                         <span>Clientes</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../reportes/reportes.html">
                         <ion-icon name="bar-chart-outline"></ion-icon>
                         <span>Reportes</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../staff/staff.html">
                         <ion-icon name="heart-outline"></ion-icon>
                         <span>Equipo</span>
                     </a>
@@ -65,6 +66,7 @@
             </ul>
         </nav>
         <div class="linea"></div>
+
         <div class="modo-oscuro">
             <div class="info">
                 <ion-icon name="moon-outline"></ion-icon>
@@ -72,11 +74,9 @@
             </div>
             <div class="switch">
                 <div class="base">
-                    <div class="circulo">
-                    </div>
+                    <div class="circulo"></div>
                 </div>
             </div>
-
         </div>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

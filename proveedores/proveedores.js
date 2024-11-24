@@ -21,12 +21,8 @@ const ProveedorManager = (function () {
       lista.innerHTML = ""; // Limpiar lista
       this.proveedores.forEach((prov, index) => {
         const li = document.createElement("li");
-        li.textContent = `${prov.nombre} - ${prov.producto} (${prov.cantidad})`;
+        li.textContent = `${prov.nombre} - ${prov.ruc} (${prov.direccion})`;
         const btnEliminar = document.createElement("button");
-        btnEliminar.textContent = "Eliminar";
-        btnEliminar.style.marginLeft = "10px";
-        btnEliminar.addEventListener("click", () => this.eliminarProveedor(index));
-        li.appendChild(btnEliminar);
         lista.appendChild(li);
       });
     }
@@ -44,11 +40,11 @@ const ProveedorManager = (function () {
 document.getElementById("proveedorForm").addEventListener("submit", (event) => {
   event.preventDefault();
   const nombre = document.getElementById("nombre").value;
-  const producto = document.getElementById("producto").value;
-  const cantidad = document.getElementById("cantidad").value;
+  const ruc = document.getElementById("ruc").value;
+  const direccion = document.getElementById("direccion").value;
 
   const gestor = new ProveedorManager();
-  gestor.agregarProveedor({ nombre, producto, cantidad });
+  gestor.agregarProveedor({ nombre, ruc, direccion });
 
   document.getElementById("proveedorForm").reset();
 });

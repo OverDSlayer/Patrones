@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../clientes/clientes.css">
+    <link rel="stylesheet" href="clientes.css">
+    <link rel="stylesheet" href="../nav_bar/index.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <title>Clientes - Pluma y Papel</title>
 </head>
+
 <body>
     <!-- Barra lateral -->
     <div class="barra-lateral">
@@ -13,13 +19,69 @@
             <ion-icon id="cloud" name="cloud-outline"></ion-icon>
             <span>Pluma y Papel</span>
         </div>
+        <button class="boton" onclick="openModal()">
+            <ion-icon name="add-outline"></ion-icon>
+            <span>Create new</span>
+        </button>
         <nav class="navegacion">
             <ul>
-                <li><a href="../clientes/clientes.html" class="active"><ion-icon name="person-outline"></ion-icon><span>Clientes</span></a></li>
-                <li><a href="../reportes/reportes.html"><ion-icon name="bar-chart-outline"></ion-icon><span>Reportes</span></a></li>
+                <li id="inventario" onclick="navigateToFile(this.id)">
+                    <a href="../inventario/inven.html">
+                        <ion-icon name="logo-dropbox"></ion-icon>
+                        <span>Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../ventas/ventas.html">
+                        <ion-icon name="cash-outline"></ion-icon>
+                        <span>Ventas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../compras/compras.html">
+                        <ion-icon name="bag-handle-outline"></ion-icon>
+                        <span>Compras</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../proveedores/proveedores.html">
+                        <ion-icon name="pencil-outline"></ion-icon>
+                        <span>Proveedores</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../clientes/clientes.html">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../reportes/reportes.html">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                        <span>Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../staff/staff.html">
+                        <ion-icon name="heart-outline"></ion-icon>
+                        <span>Equipo</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="linea"></div>
+
+        <div class="modo-oscuro">
+            <div class="info">
+                <ion-icon name="moon-outline"></ion-icon>
+                <span>Dark Mode</span>
+            </div>
+            <div class="switch">
+                <div class="base">
+                    <div class="circulo"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Contenido principal -->
@@ -69,13 +131,8 @@
         </div>
     </div>
 
-    <script src="../clientes/clientes.js"></script>
+    <script src="clientes.js"></script>
+    <script src="../nav_bar/index.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-

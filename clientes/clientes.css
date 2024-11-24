@@ -1,58 +1,48 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #F7F4F3;
-    color: #020202;
-    margin: 0;
+    font-family: "Outfit", sans-serif;
     display: flex;
+    flex-direction: row;
+    align-items: normal;
+    margin: 0;
+    transition: margin-left 0.5s ease; 
 }
-
-/* Barra lateral */
-.barra-lateral {
-    width: 250px;
-    background-color: #0D324D;
-    color: white;
-    height: 100vh;
-    position: fixed;
-    padding-top: 20px;
+.barra-lateral.mini-barra-lateral + .main--content {
+    margin-left: 80px; 
 }
-
-.barra-lateral .nombre-pagina {
-    padding: 20px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-align: center;
-    color: #F7F4F3;
+.barra-lateral:not(.mini-barra-lateral) + .main--content {
+    margin-left: 290px; 
 }
-
-.barra-lateral .navegacion a {
-    display: block;
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-    margin: 10px 0;
-}
-
-.barra-lateral .navegacion a:hover {
-    background-color: #7F5A83;
-}
-
 .main--content {
-    margin-left: 250px;
-    padding: 20px;
+    position: relative;
     width: 100%;
+    padding: 1rem;
+    transition: margin-left 0.5s ease;
 }
 
-.header--title h2 {
-    font-size: 2rem;
-    color: #020202;
+.header--wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 9px 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.header--title {
+    color: #172a3a;
+    font-size: 20px;
 }
 
 .card--container {
-    background-color: white;
-    padding: 20px;
+    background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(50% - 20px);
+    max-width: 100%;
 }
 
 .main--title {
