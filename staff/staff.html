@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <!-- Barra lateral -->
     <div class="barra-lateral">
@@ -82,32 +84,40 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <h1>NUESTRO EQUIPO</h1>
-        <div class="team-container">
-            <!-- Fotos pequeñas -->
-            <div class="team-member" onclick="showInCenter('persona1.png', 'María López', 'Diseñadora Gráfica')">
-                <img src="persona1.png" alt="Jimena Cotrina">
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <h1>Nuestro Equipo</h1>
             </div>
-            <div class="team-member" onclick="showInCenter('persona2.png', 'Juan Pérez', 'Desarrollador Web')">
-                <img src="persona2.png" alt="Victor Zapata">
-            </div>
-            <div class="team-member" onclick="showInCenter('persona3.png', 'Ana Torres', 'Gerente de Marketing')">
-                <img src="persona3.png" alt="Daniel Rodriguez">
-            </div>
-            <div class="team-member" onclick="showInCenter('persona4.png', 'Luis Fernández', 'Analista Financiero')">
-                <img src="persona4.png" alt="Luis Fernández">
-            </div>
-            
-            <!-- Foto central ampliada con información -->
-            <div class="center-photo">
-                <img id="center-image" src="persona1.png" alt="Foto central">
-                <h3 id="center-name">María López</h3>
-                <p id="center-role">Diseñadora Gráfica</p>
+        </div>
+        <div class="container">
+            <div class="team-container">
+                <!-- Fotos pequeñas -->
+                <div class="team-member" onclick="showInCenter('persona1.png', 'Jimena Cotrina', 'Diseñadora Gráfica')">
+                    <img src="persona1.png" alt="Jimena Cotrina">
+                </div>
+                <div class="team-member" onclick="showInCenter('persona2.png', 'Victor Zapata', 'Desarrollador Web')">
+                    <img src="persona2.png" alt="Victor Zapata">
+                </div>
+                <div class="team-member" onclick="showInCenter('persona3.png', 'Daniel Rodriguez', 'Gerente de Marketing')">
+                    <img src="persona3.png" alt="Daniel Rodriguez">
+                </div>
+                <div class="team-member"
+                    onclick="showInCenter('persona4.png', 'Luis Fernández', 'Analista Financiero')">
+                    <img src="persona4.png" alt="Luis Fernández">
+                </div>
+
+                <!-- Foto central ampliada con información -->
+                <div class="center-photo">
+                    <img id="center-image" src="persona1.png" alt="Foto central">
+                    <h3 id="center-name">María López</h3>
+                    <p id="center-role">Diseñadora Gráfica</p>
+                </div>
             </div>
         </div>
     </div>
 </body>
-    <script src="index.js"></script>
-    <script src="staff.js"></script>
+<script src="index.js"></script>
+<script src="staff.js"></script>
+
 </html>
