@@ -8,35 +8,6 @@ body {
     display: flex;
 }
 
-/* Barra lateral */
-.barra-lateral {
-    width: 250px;
-    background-color: #0D324D;
-    color: white;
-    height: 100vh;
-    position: fixed;
-    padding-top: 20px;
-}
-
-.barra-lateral .nombre-pagina {
-    padding: 20px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-align: center;
-    color: #F7F4F3;
-}
-
-.barra-lateral .navegacion a {
-    display: block;
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-    margin: 10px 0;
-}
-
-.barra-lateral .navegacion a:hover {
-    background-color: #7F5A83;
-}
 
 .main--content {
     margin-left: 250px;

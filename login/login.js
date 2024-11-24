@@ -21,7 +21,7 @@ form.addEventListener("submit", function (event) {
     if (userExists) {
         // Redirige al usuario a otra página o muestra un mensaje de éxito
         alert("Login successful!");
-        window.location.href = "/reportes/reportes.html"; // Cambia a la página deseada
+        window.location.href = "../reportes/reportes.html"; // Cambia a la página deseada
     } else {
         // Muestra el mensaje de error
         errorMessage.style.display = "block";
