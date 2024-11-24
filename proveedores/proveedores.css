@@ -1,81 +1,117 @@
+/* Estilo general */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-  }
-  
+  font-family: "Outfit", sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: normal;
+  margin: 0;
+  transition: margin-left 0.5s ease; 
+}
+.barra-lateral.mini-barra-lateral + .main--content {
+  margin-left: 80px; 
+}
+.barra-lateral:not(.mini-barra-lateral) + .main--content {
+  margin-left: 290px; 
+}
+.main--content {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  transition: margin-left 0.5s ease;
+}
+.header--wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 9px 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.header--title {
+  color: #172a3a;
+  font-size: 20px;
+}
+
+.container {
+  padding: 20px;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Formulario de Registro y Consulta */
+.form-section, .list-section{
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(60% - 20px);
+  width: 100%;
+}
+
+.form-section h2, .results h2 {
+  font-size: 1.5rem;
+  color: #172a3a;
+  margin-bottom: 15px;
+}
+
+.form-section label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-section input{
+  width: 100%;
+  font-size: 1rem;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+button {
+  background-color: #09bc8a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #004346;
+}
+
+
+/* Responsividad */
+@media (max-width: 768px) {
   header {
-    background-color: #6200ea;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+      margin-left: 90px;
+      width: calc(100% - 90px);
   }
-  
-  h1, h2 {
-    margin: 0.5rem 0;
+
+  .container {
+      margin-left: 100px;
+      flex-direction: column;
   }
-  
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem;
+}
+
+@media (max-width: 480px) {
+  header h1 {
+      font-size: 1.2rem;
   }
-  
-  section {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 600px;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
+
   button {
-    background-color: #6200ea;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+      font-size: 0.9rem;
+      padding: 8px;
   }
-  
-  button:hover {
-    background-color: #4500b5;
-  }
-  
-  .resultados {
-    margin-top: 1rem;
-    background: #f4f4f4;
-    padding: 1rem;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 1rem;
-  }
-  
-  .proveedor {
-    margin-top: 1rem;
-    background: #e3e3e3;
-    padding: 1rem;
-    border-radius: 5px;
-    font-size: 0.9rem;
-  }
-  
+}

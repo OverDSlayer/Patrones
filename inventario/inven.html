@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css"> <!-- Usamos el mismo CSS que para index.html -->
-    <link rel="stylesheet" href="inven.css"> <!-- CSS específico para el inventario -->
+    <link rel="stylesheet" href="../nav_bar/index.css">
+    <link rel="stylesheet" href="inven.css">
     <title>Inventario - Pluma y Papel</title>
     <!-- Íconos -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -18,32 +18,32 @@
             <ion-icon id="cloud" name="cloud-outline"></ion-icon>
             <span>Pluma y Papel</span>
         </div>
-        <button class="boton">
+        <button class="boton" onclick="openModal()">
             <ion-icon name="add-outline"></ion-icon>
             <span>Create new</span>
         </button>
         <nav class="navegacion">
             <ul>
-                <li id="inventario" onclick="navigateToFile(this.id)">
+                <li>
                     <a href="inven.html">
                         <ion-icon name="logo-dropbox"></ion-icon>
                         <span>Inventario</span>
                     </a>
                 </li>
-                <li id="ventas" onclick="navigateToFile(this.id)">
-                    <a href="#">
+                <li>
+                    <a href="../ventas/ventas.html">
                         <ion-icon name="cash-outline"></ion-icon>
                         <span>Ventas</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../compras/compras.html">
                         <ion-icon name="bag-handle-outline"></ion-icon>
                         <span>Compras</span>
                     </a>
                 </li>
-                <li id="proveedores" onclick="navigateToFile(this.id)">
-                    <a href="#">
+                <li>
+                    <a href="../proveedores/proveedores.html">
                         <ion-icon name="pencil-outline"></ion-icon>
                         <span>Proveedores</span>
                     </a>
@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../staff/staff.html">
                         <ion-icon name="heart-outline"></ion-icon>
                         <span>Equipo</span>
                     </a>
@@ -83,38 +83,96 @@
         </div>
     </div>
 
-    <!-- Contenido principal -->
-    <div class="main--content">
-        <div class="header--wrapper">
-            <div class="header--title">
-                <span>Registros</span>
-                <h2>Inventario</h2>
-            </div>
-            <div class="user--info">
-                <div class="searh--box">
-                    <i class="fa-solid fa-search"></i>
-                    <input type="text" placeholder="Search" />
-                </div>
-                <img src="./image/img.jpg" alt="User profile picture" />
-            </div>
+   <!-- Contenido principal -->
+<div class="main--content">
+    <div class="header--wrapper">
+        <div class="header--title">
+            <span>Registros</span>
+            <h2>Inventario</h2>
         </div>
-        <div class="card--container">
-            <h3 class="main--title">Today's Data</h3>
-            <div class="card--wrapper">
-                <div class="payment--card">
-                    <div class="card--header">
-                        <div class="amount">
-                            <span class="title">Payment amount</span>
-                            <span class="amount-value">$500.00</span>
-                        </div>
-                        <i class="fas fa-dollar-sign icon"></i>
-                    </div>
-                    <span class="card-detail">**** **** **** 3484</span>
-                </div>
+        <div class="user--info">
+            <div class="search--box">
+                <ion-icon name="search-outline"></ion-icon>
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search" id="#searchInput" />
             </div>
+            <img src="./imagen.png" alt="User profile picture" />
         </div>
     </div>
 
-    <script src="index.js"></script> <!-- Incluye JavaScript si es necesario -->
+    <!-- Modal -->
+    <div id="modal" class="modal" onsubmit="registerProduct(event)">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Registrar nuevo producto</h2>
+            <form id="modal-form">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo" required>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" required>
+
+                <label for="colores">Colores:</label>
+                <input type="text" id="colores" name="colores" required>
+
+                <label for="disponible">Disponible:</label>
+                <input type="number" id="disponible" name="disponible" required>
+
+                <!-- Selección de Categoría -->
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria">
+                    <option value="Material de Escritura">Material de Escritura</option>
+                    <option value="Material de Arte y Manualidades">Material de Arte y Manualidades</option>
+                    <option value="Accesorios de Escritura">Accesorios de Escritura</option>
+                    <option value="Papelería">Papelería</option>
+                    <option value="Instrumentos de Medición">Instrumentos de Medición</option>
+                    <option value="Material Organizativo">Material Organizativo</option>
+                </select>
+
+                <button type="submit" onclick="registerProduct(event)">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Botones de categorías -->
+    <div class="categories-container">
+        <div class="categories">
+            <button class="category" onclick="filterByCategory('Material de Escritura')">Material de Escritura</button>
+            <button class="category" onclick="filterByCategory('Material de Arte y Manualidades')">Material de Arte y Manualidades</button>
+            <button class="category" onclick="filterByCategory('Accesorios de Escritura')">Accesorios de Escritura</button>
+            <button class="category" onclick="filterByCategory('Papelería')">Papelería</button>
+            <button class="category" onclick="filterByCategory('Instrumentos de Medición')">Instrumentos de Medición</button>
+            <button class="category" onclick="filterByCategory('Material Organizativo')">Material Organizativo</button>
+            <button class="category" onclick="showAllProducts()">Mostrar Todos</button>
+        </div>
+    </div>
+
+    <!-- Lista de productos -->
+    <div class="tabular--wrapper">
+        <h3 class="main--title">Lista de productos</h3>
+        <div class="table-container"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Colores</th>
+                    <th>Disponible</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas de la tabla se llenarán dinámicamente con JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</div>
+    
+    <script src="../nav_bar/index.js"></script>
+    <script src="inven.js"></script>
+    <script src="funcionInve.js"></script>
 </body>
 </html>

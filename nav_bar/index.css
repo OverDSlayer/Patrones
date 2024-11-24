@@ -52,19 +52,24 @@ body{
 }
 
 .barra-lateral{
-    
+    position: fixed; /* Asegura que la barra lateral permanezca fija */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que la barra lateral esté encima del contenido */
     width: 290px;
     height: 100%;
     overflow: hidden;
     padding: 20px 15px;
     background-color: var(--color-barra-lateral);
-    transition: width 0.5s ease, background-color 0.3s ease; 
+    transition: width 0.5s ease, background-color 0.3s ease;
+   
 }
 .mini-barra-lateral{
     width: 80px;
 }
 
 .barra-lateral span{
+    
     width: 100px;
     white-space: nowrap;
     font-size: 18px;

@@ -1,23 +1,3 @@
-const cloud = document.getElementById("cloud");
-const barralateral = document.querySelector(".barra-lateral");
-const spans = document.querySelectorAll("span");
-const palanca = document.querySelector(".switch");
-const circulo = document.querySelector(".circulo");
-
-// Modo oscuro
-palanca.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    circulo.classList.toggle("prendido");
-});
-
-// Minimizar barra lateral
-cloud.addEventListener("click", () => {
-    barralateral.classList.toggle("mini-barra-lateral");
-    spans.forEach((span) => {
-        span.classList.toggle("oculto");
-    });
-});
-
  // JS del sistema de ventas
  class VentasFacade {
   constructor() {
