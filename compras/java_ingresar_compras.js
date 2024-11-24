@@ -1,4 +1,5 @@
-// Clase Builder para crear facturas
+// Clase Builder para crear facturas (sin cambios)
+const facturas = [];
 class FacturaBuilder {
     constructor() {
         this.factura = {
@@ -61,10 +62,40 @@ class FacturaBuilder {
     }
 }
 
-// Array para almacenar las facturas
-const facturas = [];
+// Función para cargar proveedores desde localStorage
+function cargarProveedores() {
+    const proveedores = JSON.parse(localStorage.getItem("proveedores")) || [];
+    const selectProveedor = document.getElementById("proveedor-select");
 
-// Función para calcular los totales de una fila de productos
+    // Limpiar opciones previas
+    selectProveedor.innerHTML = `<option value="" disabled selected>Seleccione un proveedor</option>`;
+
+    // Agregar cada proveedor como opción
+    proveedores.forEach((prov, index) => {
+        const option = document.createElement("option");
+        option.value = index; // Usar índice como valor
+        option.textContent = `${prov.nombre}`;
+        selectProveedor.appendChild(option);
+    });
+}
+
+
+function actualizarCamposProveedor() {
+    const proveedores = JSON.parse(localStorage.getItem("proveedores")) || [];
+    const selectProveedor = document.getElementById("proveedor-select");
+    const proveedorSeleccionado = proveedores[selectProveedor.value];
+
+    if (proveedorSeleccionado) {
+        document.getElementById("ruc").value = proveedorSeleccionado.ruc;
+        document.getElementById("direccion").value = proveedorSeleccionado.direccion;
+    } else {
+        document.getElementById("ruc").value = "";
+        document.getElementById("direccion").value = "";
+    }
+}
+
+
+// Función para calcular los totales de una fila de productos (sin cambios)
 function calculateRowTotal(input) {
     const row = input.closest(".product-row");
     const units = parseFloat(row.querySelector(".product-units").value) || 0;
@@ -76,7 +107,7 @@ function calculateRowTotal(input) {
     updateTotals();
 }
 
-// Función para actualizar los totales generales
+// Función para actualizar los totales generales (sin cambios)
 function updateTotals() {
     const productRows = document.querySelectorAll(".product-row");
     let totalSinIgv = 0;
@@ -94,7 +125,7 @@ function updateTotals() {
     document.getElementById("total-pagar").value = totalPagar.toFixed(2);
 }
 
-// Función para añadir una nueva fila de productos
+// Función para añadir una nueva fila de productos (sin cambios)
 function addRow() {
     const container = document.getElementById("products-container");
     const newRow = document.createElement("div");
@@ -110,14 +141,25 @@ function addRow() {
     container.appendChild(newRow);
 }
 
-// Función para guardar la compra en localStorage
+// Función para guardar la compra en localStorage (sin cambios)
 function guardarEnLocalStorage() {
     const comprasGuardadas = JSON.parse(localStorage.getItem("compras")) || [];
-    comprasGuardadas.push(facturas[facturas.length - 1]); // Guardar la última factura agregada
+    comprasGuardadas.push(facturas[facturas.length - 1]); // Guardar la última factura
     localStorage.setItem("compras", JSON.stringify(comprasGuardadas));
 }
+function cargarCompras() {
+    const comprasGuardadas = JSON.parse(localStorage.getItem("compras")) || [];
+    if (comprasGuardadas.length > 0) {
+        console.log("Compras cargadas desde localStorage:", comprasGuardadas);
+    }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    cargarProveedores();
+    cargarCompras();
+    document.getElementById("proveedor-select").addEventListener("change", actualizarCamposProveedor);
+});
 
-// Función para crear un registro de factura
+// Función para crear un registro de factura (sin cambios)
 function crearRegistro() {
     const builder = new FacturaBuilder();
 
@@ -127,7 +169,10 @@ function crearRegistro() {
     const serie = document.getElementById("serie").value;
     const numero = document.getElementById("numero").value;
     const ruc = document.getElementById("ruc").value;
-    const nombreProveedor = document.getElementById("nombre-proveedor").value;
+    const nombreProveedor = document.getElementById("proveedor-select").options[
+        document.getElementById("proveedor-select").selectedIndex
+    ].text.split(" - ")[0]; // Obtén el nombre antes del guión
+    
     const direccion = document.getElementById("direccion").value;
 
     const productos = [];
@@ -167,7 +212,7 @@ function crearRegistro() {
     limpiarCampos();
 }
 
-// Función para limpiar los campos del formulario
+// Función para limpiar los campos del formulario (sin cambios)
 function limpiarCampos() {
     document.getElementById("fecha").value = "";
     document.getElementById("fecha-documento").value = "";
@@ -191,3 +236,9 @@ function limpiarCampos() {
     document.getElementById("total-igv").value = "";
     document.getElementById("total-pagar").value = "";
 }
+
+// Inicialización al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    cargarProveedores();
+    document.getElementById("select-proveedor").addEventListener("change", seleccionarProveedor);
+});

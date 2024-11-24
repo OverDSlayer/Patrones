@@ -1,20 +1,41 @@
+// Clase para manejar las ventas
 class VentasFacade {
     constructor() {
-        this.ventas = this._cargarVentasDeLocalStorage();
+        this.ventas = JSON.parse(localStorage.getItem('ventas')) || [];
     }
 
     registrarVenta(fecha, id_producto, monto, cantidad) {
         if (!fecha || isNaN(id_producto) || isNaN(monto) || isNaN(cantidad)) {
             throw new Error("Datos inválidos para registrar la venta.");
         }
-        const nuevaVenta = {
+
+        // Buscar el producto en el inventario
+        const producto = productos.find(p => p.codigo == id_producto);
+        if (!producto) {
+            throw new Error("Producto no encontrado en el inventario.");
+        }
+
+        // Verificar si hay suficiente stock
+        if (producto.disponible < cantidad) {
+            throw new Error("Stock insuficiente para realizar la venta.");
+        }
+
+        // Reducir el stock
+        producto.disponible -= cantidad;
+
+        // Actualizar productos en localStorage
+        localStorage.setItem('productos', JSON.stringify(productos));
+
+        // Registrar la venta
+        this.ventas.push({
             fecha: new Date(fecha),
             id_producto: parseInt(id_producto),
             monto: parseFloat(monto),
             cantidad: parseInt(cantidad),
-        };
-        this.ventas.push(nuevaVenta);
-        this._guardarVentasEnLocalStorage();
+        });
+
+        // Guardar las ventas en localStorage
+        localStorage.setItem('ventas', JSON.stringify(this.ventas));
     }
 
     consultarVentas(tipo, fechaInicio = null, fechaFin = null) {
@@ -51,26 +72,9 @@ class VentasFacade {
             fecha1.getFullYear() === fecha2.getFullYear()
         );
     }
-
-    _guardarVentasEnLocalStorage() {
-        localStorage.setItem("ventas", JSON.stringify(this.ventas));
-    }
-
-    _cargarVentasDeLocalStorage() {
-        const ventasGuardadas = localStorage.getItem("ventas");
-        if (ventasGuardadas) {
-            return JSON.parse(ventasGuardadas).map((venta) => ({
-                ...venta,
-                fecha: new Date(venta.fecha), // Reconstruimos los objetos Date
-            }));
-        }
-        return [];
-    }
 }
 
 const ventasFacade = new VentasFacade();
-
-// Registro de ventas
 document.getElementById("registro-venta").addEventListener("submit", (e) => {
     e.preventDefault();
     const fecha = document.getElementById("fecha").value;
@@ -81,6 +85,9 @@ document.getElementById("registro-venta").addEventListener("submit", (e) => {
     try {
         ventasFacade.registrarVenta(fecha, id_producto, monto, cantidad);
         alert("¡Venta registrada exitosamente!");
+
+        // Actualizar la tabla de productos para reflejar los cambios en el stock
+        updateTable();
         e.target.reset();
     } catch (error) {
         alert(error.message);
@@ -112,7 +119,6 @@ document.getElementById("consulta-ventas").addEventListener("submit", (e) => {
                     <td>${venta.fecha.toLocaleDateString()}</td>
                     <td>${venta.id_producto}</td>
                     <td>S/${venta.monto.toFixed(2)}</td>
-                    <td>${venta.cantidad}</td>
                 `;
                 tablaResultados.appendChild(fila);
             });

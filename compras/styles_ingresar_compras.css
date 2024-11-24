@@ -17,6 +17,44 @@ html, body {
   .barra-lateral:not(.mini-barra-lateral) + .main--content {
     margin-left: 290px; 
   }
+  .header--wrapper img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    padding: 2rem;
+    border-radius: 50%;
+}
+  .user--info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+  .search--box {
+    background: rgb(237, 237, 237);
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+}
+
+.search--box input {
+    background: transparent;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+
+.search--box i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+
+.search--box i:hover {
+    transform: scale(1.2);
+}
   .main--content {
     position: relative;
     width: 100%;
@@ -103,7 +141,7 @@ html, body {
 
 .products-header {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     font-size: 14px;
     font-weight: bold;
     padding: 10px 0;
@@ -121,7 +159,7 @@ html, body {
 
 .product-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 15px;
     align-items: center;
     margin-bottom: 12px;

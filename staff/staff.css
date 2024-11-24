@@ -19,7 +19,44 @@ body {
 .barra-lateral:not(.mini-barra-lateral) + .main--content {
     margin-left: 290px; 
 }
+.header--wrapper img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    padding: 2rem;
+    border-radius: 50%;
+}
+  .user--info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+  .search--box {
+    background: rgb(237, 237, 237);
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+}
 
+.search--box input {
+    background: transparent;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+
+.search--box i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+
+.search--box i:hover {
+    transform: scale(1.2);
+}
 .main--content {
     position: relative;
     background: #ebe9e9;

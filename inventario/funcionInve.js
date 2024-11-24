@@ -3,20 +3,21 @@ let productos = JSON.parse(localStorage.getItem("productos")) || [];
 let searchElements = [];
 
 // Funcionamiento de la barra de búsqueda
-const searchInput = document.getElementById("searchInput"); // Ajustar el selector
-searchInput.addEventListener("keyup", function(event) {
+const searchInput = document.getElementById('#searchInput');
+searchInput.addEventListener('keyup', function(event){
     searchElements = [];
-    if (searchInput.value !== "") {
+    if(searchInput.value !== ''){
         productos.forEach((element) => {
-            if (element.nombre.toLowerCase().includes(searchInput.value.toLowerCase())) {
+            if(element.nombre.toLowerCase().includes(searchInput.value.toLowerCase())){
                 searchElements.push(element);
             }
         });
         updateTable(searchElements);
-    } else {
+    }else{
         updateTable(productos);
     }
 });
+function showSearchElements(){}
 
 // Función para abrir el modal
 function openModal() {
@@ -46,14 +47,11 @@ function registerProduct(event) {
         marca,
         colores,
         disponible,
-        categoria, // Agregar la categoría
+        categoria  // Agregar la categoría
     };
 
     // Agregar el nuevo producto al array
     productos.push(nuevoProducto);
-
-    // Guardar el array actualizado en localStorage
-    localStorage.setItem("productos", JSON.stringify(productos));
 
     console.log("Producto registrado:", nuevoProducto);
 
@@ -72,10 +70,10 @@ function updateTable(filteredProducts = productos) {
     const tableBody = document.querySelector("table tbody");
 
     // Limpiar la tabla antes de agregar los nuevos productos
-    tableBody.innerHTML = "";
+    tableBody.innerHTML = '';
 
     // Iterar sobre el array de productos (filtrados o todos) y agregar cada producto como una fila en la tabla
-    filteredProducts.forEach((producto) => {
+    filteredProducts.forEach(producto => {
         const row = document.createElement("tr");
 
         row.innerHTML = `
@@ -92,9 +90,7 @@ function updateTable(filteredProducts = productos) {
 
 // Función para filtrar productos por categoría
 function filterByCategory(category) {
-    const filteredProducts = productos.filter(
-        (producto) => producto.categoria === category
-    );
+    const filteredProducts = productos.filter(producto => producto.categoria === category);
     console.log(`Filtrando por categoría: ${category}`, filteredProducts);
 
     // Llamar a updateTable con los productos filtrados
@@ -106,8 +102,3 @@ function showAllProducts() {
     console.log("Mostrando todos los productos");
     updateTable(productos);
 }
-
-// Cargar la tabla con los datos almacenados al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    updateTable();
-});
