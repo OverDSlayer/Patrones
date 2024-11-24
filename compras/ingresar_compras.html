@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Compras</title>
+    <link rel="stylesheet" href="styles_ingresar_compras.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Fechas -->
+        <div class="row">
+            <div class="field-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" required>
+            </div>
+            <div class="field-group">
+                <label for="fecha-documento">Fecha Documento:</label>
+                <input type="date" id="fecha-documento" required>
+            </div>
+        </div>
+
+        <!-- Documento -->
+        <div class="row">
+            <div class="field-group medium">
+                <label for="documento">Documento:</label>
+                <input type="text" id="documento" value="Factura Electrónica" readonly>
+            </div>
+            <div class="field-group small">
+                <input type="text" id="serie" placeholder="Serie" required>
+            </div>
+            <div class="field-group small">
+                <input type="text" id="numero" placeholder="Número" required>
+            </div>
+        </div>
+
+        <!-- Proveedor -->
+        <div class="row">
+            <div class="field-group small">
+                <label for="ruc">Proveedor RUC:</label>
+                <input type="text" id="ruc" placeholder="RUC" required>
+            </div>
+            <div class="field-group large">
+                <label for="nombre-proveedor">Nombre del Proveedor:</label>
+                <input type="text" id="nombre-proveedor" placeholder="Nombre del Proveedor" required>
+            </div>
+        </div>
+
+        <!-- Dirección -->
+        <div class="row">
+            <div class="field-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" required>
+            </div>
+        </div>
+
+        <!-- Tabla de Productos -->
+        <div class="products-section">
+            <div class="products-header">
+                <span>Nombre Producto</span>
+                <span>Unidades</span>
+                <span>Costo</span>
+                <span>Total</span>
+            </div>
+            <div id="products-container" class="products-container">
+                <!-- Se agregarán filas de productos aquí -->
+                <div class="product-row">
+                    <input type="text" class="input product-name" placeholder="Producto" required>
+                    <input type="number" class="input product-units" oninput="calculateRowTotal(this)" required>
+                    <input type="number" class="input product-cost" oninput="calculateRowTotal(this)" required>
+                    <input type="number" class="input product-total" readonly>
+                </div>
+            </div>
+            <button class="add-row" type="button" onclick="addRow()">+</button>
+        </div>
+
+        <!-- Totales -->
+        <div class="totals-section">
+            <div>
+                <label for="total-igv">Total IGV (18%):</label>
+                <input type="number" id="total-igv" readonly>
+            </div>
+            <div>
+                <label for="total-sin-igv">Operación Total sin IGV:</label>
+                <input type="number" id="total-sin-igv" readonly>
+            </div>
+            <div>
+                <label for="total-pagar">Total a Pagar:</label>
+                <input type="number" id="total-pagar" readonly>
+            </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="actions">
+            <button class="submit-button" type="button" onclick="crearRegistro()">Crear Registro</button>
+            <button class="back-button" type="button" onclick="window.history.back()">Volver</button>
+        </div>
+    </div>
+
+    <script src="java_ingresar_compras.js"></script>
+</body>
+</html>
