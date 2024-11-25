@@ -84,7 +84,7 @@
     </div>
 
    <!-- Contenido principal -->
-<div class="main--content">
+   <div class="main--content">
     <div class="header--wrapper">
         <div class="header--title">
             <span>Registros</span>
@@ -100,42 +100,58 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div id="modal" class="modal" onsubmit="registerProduct(event)">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Registrar nuevo producto</h2>
-            <form id="modal-form">
-                <label for="codigo">Código:</label>
-                <input type="text" id="codigo" name="codigo" required>
+ <!-- Modal para Registrar nuevo producto -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Registrar nuevo producto</h2>
+        <form id="modal-form" onsubmit="registerProduct(event)">
+            <!-- Selección de Código -->
+            <label for="codigo">Código:</label>
+            <select id="codigo" name="codigo">
+                <!-- Opciones se llenan dinámicamente -->
+                <option value="" disabled selected>Seleccione un código</option>
+            </select>
 
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+            <!-- Campos de Producto -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required readonly> <!-- Campo no editable -->
 
-                <label for="marca">Marca:</label>
-                <input type="text" id="marca" name="marca" required>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" required>
 
-                <label for="colores">Colores:</label>
-                <input type="text" id="colores" name="colores" required>
+            <label for="colores">Colores:</label>
+            <input type="text" id="colores" name="colores" required>
 
-                <label for="disponible">Disponible:</label>
-                <input type="number" id="disponible" name="disponible" required>
+            <label for="disponible">Disponible:</label>
+            <input type="number" id="disponible" name="disponible" required readonly> <!-- Campo no editable -->
 
-                <!-- Selección de Categoría -->
-                <label for="categoria">Categoría:</label>
-                <select id="categoria" name="categoria">
-                    <option value="Material de Escritura">Material de Escritura</option>
-                    <option value="Material de Arte y Manualidades">Material de Arte y Manualidades</option>
-                    <option value="Accesorios de Escritura">Accesorios de Escritura</option>
-                    <option value="Papelería">Papelería</option>
-                    <option value="Instrumentos de Medición">Instrumentos de Medición</option>
-                    <option value="Material Organizativo">Material Organizativo</option>
-                </select>
+            <!-- Selección de Categoría -->
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria">
+                <option value="Material de Escritura">Material de Escritura</option>
+                <option value="Material de Arte y Manualidades">Material de Arte y Manualidades</option>
+                <option value="Accesorios de Escritura">Accesorios de Escritura</option>
+                <option value="Papelería">Papelería</option>
+                <option value="Instrumentos de Medición">Instrumentos de Medición</option>
+                <option value="Material Organizativo">Material Organizativo</option>
+            </select>
 
-                <button type="submit" onclick="registerProduct(event)">Registrar</button>
-            </form>
-        </div>
+            <!-- Botón de Registro -->
+            <button type="submit">Registrar</button>
+        </form>
     </div>
+</div>
+
+
+<!-- Modal de Factura -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
 
     <!-- Botones de categorías -->
     <div class="categories-container">
@@ -170,7 +186,7 @@
         </table>
     </div>
 </div>
-    
+
     <script src="../nav_bar/index.js"></script>
     <script src="inven.js"></script>
     <script src="funcionInve.js"></script>

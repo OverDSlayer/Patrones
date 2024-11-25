@@ -9,9 +9,11 @@ body {
     background: #ebe9e9;
     transition: margin-left 0.5s ease; 
 }
+
 .barra-lateral.mini-barra-lateral + .main--content {
     margin-left: 80px; 
 }
+
 .barra-lateral:not(.mini-barra-lateral) + .main--content {
     margin-left: 290px; 
 }
@@ -146,12 +148,14 @@ thead{
 }
 
 th{
-padding: 15px;
-text-align: left;
+    padding: 15px;
+    text-align: left;
 }
+
 tbody{
     background: #f2f2f2;
 }
+
 td{
     padding: 15px;
     font-size: 14px;
@@ -161,6 +165,7 @@ td{
 tr:nth-child(even){
     background: #fff;
 }
+
 tfoot{
     background: #0D324D;
     font-weight: bold;
@@ -210,6 +215,7 @@ tfoot td{
     max-width: 500px;
 }
 
+/* Estilo del botón de cerrar */
 .close {
     color: #aaa;
     font-size: 28px;
@@ -227,31 +233,65 @@ tfoot td{
     cursor: pointer;
 }
 
+/* Estilo del formulario dentro del modal */
 form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 form label {
-    margin: 10px 0 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
 }
 
-form input {
+form input[type="text"], form input[type="number"], form select {
     padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    font-size: 14px;
     border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
-form button {
-    padding: 10px;
-    background-color: #1e8b74;
+/* Estilo cuando el input está enfocado */
+form input[type="text"]:focus, form input[type="number"]:focus, form select:focus {
+    border-color: #5b9bd5;
+}
+
+/* Estilo del select de código */
+#codigo {
+    background-color: #f9f9f9;
+    cursor: pointer;
+    color: #555;
+}
+
+/* Estilo del botón de registro */
+form button[type="submit"] {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-form button:hover {
-    background-color: #4a6c5b;
+/* Estilo para el botón al pasar el cursor */
+form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para el botón de registro deshabilitado */
+form button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Estilo para los campos readonly */
+form input[readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
 }

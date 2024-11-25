@@ -1,35 +1,41 @@
 html, body {
-    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    height: 100%;
     margin: 0;
-    background: #ebe9e9; /* Fondo global que coincida con el fondo de .main--content */
-  }
-  body {
+    background: #ebe9e9; /* Fondo global que coincide con el fondo de .main--content */
+}
+
+body {
     font-family: "Outfit", sans-serif;
     display: flex;
     flex-direction: row;
     align-items: normal;
     margin: 0;
-    transition: margin-left 0.5s ease; 
-  }
-  .barra-lateral.mini-barra-lateral + .main--content {
-    margin-left: 80px; 
-  }
-  .barra-lateral:not(.mini-barra-lateral) + .main--content {
-    margin-left: 290px; 
-  }
-  .header--wrapper img {
+    transition: margin-left 0.5s ease;
+}
+
+.barra-lateral.mini-barra-lateral + .main--content {
+    margin-left: 80px;
+}
+
+.barra-lateral:not(.mini-barra-lateral) + .main--content {
+    margin-left: 290px;
+}
+
+.header--wrapper img {
     width: 100px;
     height: 100px;
     cursor: pointer;
     padding: 2rem;
     border-radius: 50%;
 }
-  .user--info {
+
+.user--info {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
-  .search--box {
+
+.search--box {
     background: rgb(237, 237, 237);
     border-radius: 20px;
     color: rgb(0, 0, 0);
@@ -37,6 +43,7 @@ html, body {
     align-items: center;
     gap: 5px;
     padding: 4px 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search--box input {
@@ -55,14 +62,16 @@ html, body {
 .search--box i:hover {
     transform: scale(1.2);
 }
-  .main--content {
+
+.main--content {
     position: relative;
     width: 100%;
     padding: 1rem;
     transition: margin-left 0.5s ease;
     background: #ebe9e9;
-  }
-  .header--wrapper {
+}
+
+.header--wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,12 +80,14 @@ html, body {
     border-radius: 10px;
     padding: 9px 2rem;
     margin-bottom: 1.5rem;
-  }
-  
-  .header--title {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header--title {
     color: rgb(7, 75, 112);
     font-size: 28px;
-  }
+}
+
 .container {
     max-width: 100%;
     margin: 20px auto;
@@ -85,6 +96,7 @@ html, body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 /* Layout and Fields */
 .row {
     display: flex;
@@ -112,12 +124,13 @@ html, body {
     font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .field-group input:focus {
     border-color: #0078d4;
     outline: none;
+    box-shadow: 0 0 5px rgba(0, 120, 212, 0.5);
 }
 
 /* Special Sizes */
@@ -172,11 +185,11 @@ html, body {
     border-radius: 4px;
     text-align: center;
     width: 100%;
+    transition: border-color 0.3s;
 }
 
-.product-row input.product-total {
-    grid-column: span 1;
-    width: 100%;
+.product-row input:focus {
+    border-color: #0078d4;
 }
 
 /* Botón de agregar producto */
@@ -186,7 +199,7 @@ html, body {
     font-size: 14px;
     font-weight: 600;
     color: #fff;
-    background-color: #0D324D ;
+    background-color: #0D324D;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -194,8 +207,8 @@ html, body {
 }
 
 .add-row:hover {
-    background-color: #0D324D ;
-    transform: scale(1.1); /* Agrandamiento ligero */
+    background-color: #0D324D;
+    transform: scale(1.1);
 }
 
 /* Totals Section */
@@ -223,6 +236,12 @@ html, body {
     border-radius: 4px;
     text-align: right;
     background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.totals-section input:focus {
+    border-color: #0078d4;
+    box-shadow: 0 0 5px rgba(0, 120, 212, 0.5);
 }
 
 /* Botón de Crear Registro */
@@ -240,7 +259,7 @@ html, body {
 
 .submit-button:hover {
     background-color: #218838;
-    transform: scale(1.1); /* Agrandamiento ligero */
+    transform: scale(1.1);
 }
 
 /* Botón de Ver Compras */
@@ -249,7 +268,7 @@ html, body {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background-color: #0D324D ;
+    background-color: #0D324D;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -257,6 +276,52 @@ html, body {
 }
 
 .view-purchases-button:hover {
-    background-color: #0D324D ;
-    transform: scale(1.1); /* Agrandamiento ligero */
+    background-color: #0D324D;
+    transform: scale(1.1);
+}
+/* Estilización del campo de selección */
+select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    appearance: none; /* Elimina la apariencia predeterminada del navegador */
+    -webkit-appearance: none; /* Para Safari */
+    -moz-appearance: none; /* Para Firefox */
+    transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Cambiar el borde y agregar sombra cuando el campo de selección está en foco */
+select:focus {
+    border-color: #0078d4;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 120, 212, 0.5);
+}
+
+/* Estilo de la flecha del selector */
+select::-ms-expand {
+    display: none; /* Eliminar la flecha en Internet Explorer */
+}
+
+select::after {
+    content: ' ▼'; /* Añadir una flecha personalizada */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* No interactuar con la flecha */
+}
+
+/* Personalización de los valores dentro del campo */
+select option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Agregar un hover sobre las opciones */
+select option:hover {
+    background-color: #f0f0f0;
 }
