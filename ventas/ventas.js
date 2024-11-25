@@ -1,4 +1,3 @@
-// Clase para manejar las ventas
 class VentasFacade {
     constructor() {
         // Recuperar ventas almacenadas en localStorage
@@ -12,6 +11,10 @@ class VentasFacade {
         if (!fecha || isNaN(id_producto) || isNaN(monto) || isNaN(cantidad) || monto <= 0 || cantidad <= 0) {
             throw new Error("Por favor, ingresa datos válidos (valores positivos y no vacíos).");
         }
+
+        // Normalizar la fecha para evitar problemas de zona horaria
+        const [year, month, day] = fecha.split("-").map(Number);
+        const fechaVenta = new Date(year, month - 1, day); // Ajustar el mes (0-indexado)
 
         // Buscar el producto en el inventario
         const productos = JSON.parse(localStorage.getItem("productos")) || [];
@@ -31,7 +34,7 @@ class VentasFacade {
 
         // Registrar la venta
         this.ventas.push({
-            fecha: new Date(fecha),
+            fecha: fechaVenta,
             id_producto: parseInt(id_producto),
             monto: parseFloat(monto),
             cantidad: parseInt(cantidad),
@@ -56,8 +59,12 @@ class VentasFacade {
                 if (!fechaInicio || !fechaFin) {
                     throw new Error("Debes proporcionar las fechas de inicio y fin para la consulta personalizada.");
                 }
-                const inicio = new Date(fechaInicio);
-                const fin = new Date(fechaFin);
+                // Normalizar fechas de inicio y fin
+                const [inicioYear, inicioMonth, inicioDay] = fechaInicio.split("-").map(Number);
+                const [finYear, finMonth, finDay] = fechaFin.split("-").map(Number);
+                const inicio = new Date(inicioYear, inicioMonth - 1, inicioDay);
+                const fin = new Date(finYear, finMonth - 1, finDay);
+
                 return this.ventas.filter((venta) => venta.fecha >= inicio && venta.fecha <= fin);
             default:
                 throw new Error("Tipo de consulta no válida.");
@@ -72,7 +79,6 @@ class VentasFacade {
         );
     }
 }
-
 const ventasFacade = new VentasFacade();
 
 document.getElementById("registro-venta").addEventListener("submit", (e) => {

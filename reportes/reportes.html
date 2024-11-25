@@ -101,15 +101,8 @@
         </div>
 
         <div class="card--container">
-            <h3 class="main--title">Estadísticas de Ventas</h3>
-            <form id="reportForm">
-                <input type="text" id="month" placeholder="Nombre del Mes (Enero, Febrero, ...)" required />
-                <input type="number" id="sales" placeholder="Ventas ($)" required />
-                <button type="submit">Agregar Reporte</button>
-            </form>
-
             <!-- Botón para eliminar todos los reportes -->
-            <button id="clearReportsBtn" class="boton">Limpiar Todos los Reportes</button>
+
 
             <!-- Reportes -->
             <div id="reportList">
@@ -123,7 +116,7 @@
                 <!-- Reporte de Ventas por Mes -->
                 <div class="report-section">
                     <h4>Ventas por Mes</h4>
-                    <canvas id="monthlySalesChart"></canvas>
+                    <canvas id="salesChart" width="400" height="200"></canvas>
                     <p class="description">Gráfico de barras que muestra las ventas de cada mes del año.</p>
                 </div>
 
@@ -144,7 +137,8 @@
                 </div>
             </div>
 
-            <canvas id="salesChart" width="400" height="200"></canvas>
+
+            <button id="clearReportsBtn" class="boton">Limpiar Todos los Reportes</button>
         </div>
     </div>
 
