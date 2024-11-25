@@ -1,23 +1,27 @@
-// Array para almacenar los productos
+// Array para almacenar los productos (se inicializa desde localStorage)
 let productos = JSON.parse(localStorage.getItem("productos")) || [];
 let searchElements = [];
 
+// Guardar productos en localStorage
+function guardarProductosEnLocalStorage() {
+    localStorage.setItem("productos", JSON.stringify(productos));
+}
+
 // Funcionamiento de la barra de búsqueda
-const searchInput = document.getElementById('#searchInput');
-searchInput.addEventListener('keyup', function(event){
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('keyup', function (event) {
     searchElements = [];
-    if(searchInput.value !== ''){
+    if (searchInput.value !== '') {
         productos.forEach((element) => {
-            if(element.nombre.toLowerCase().includes(searchInput.value.toLowerCase())){
+            if (element.nombre.toLowerCase().includes(searchInput.value.toLowerCase())) {
                 searchElements.push(element);
             }
         });
         updateTable(searchElements);
-    }else{
+    } else {
         updateTable(productos);
     }
 });
-function showSearchElements(){}
 
 // Función para abrir el modal
 function openModal() {
@@ -38,7 +42,7 @@ function registerProduct(event) {
     const marca = document.getElementById("marca").value;
     const colores = document.getElementById("colores").value;
     const disponible = document.getElementById("disponible").value;
-    const categoria = document.getElementById("categoria").value; // Obtener la categoría seleccionada
+    const categoria = document.getElementById("categoria").value;
 
     // Crear un nuevo objeto producto
     const nuevoProducto = {
@@ -47,11 +51,12 @@ function registerProduct(event) {
         marca,
         colores,
         disponible,
-        categoria  // Agregar la categoría
+        categoria
     };
 
     // Agregar el nuevo producto al array
     productos.push(nuevoProducto);
+    guardarProductosEnLocalStorage(); // Guardar los productos actualizados en localStorage
 
     console.log("Producto registrado:", nuevoProducto);
 
@@ -102,3 +107,8 @@ function showAllProducts() {
     console.log("Mostrando todos los productos");
     updateTable(productos);
 }
+
+// Inicializar la tabla al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    updateTable();
+});
