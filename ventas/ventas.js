@@ -1,30 +1,33 @@
 // Clase para manejar las ventas
 class VentasFacade {
     constructor() {
-        this.ventas = JSON.parse(localStorage.getItem('ventas')) || [];
+        // Recuperar ventas almacenadas en localStorage
+        this.ventas = JSON.parse(localStorage.getItem("ventas"))?.map((venta) => ({
+            ...venta,
+            fecha: new Date(venta.fecha),
+        })) || [];
     }
 
     registrarVenta(fecha, id_producto, monto, cantidad) {
-        if (!fecha || isNaN(id_producto) || isNaN(monto) || isNaN(cantidad)) {
-            throw new Error("Datos inválidos para registrar la venta.");
+        if (!fecha || isNaN(id_producto) || isNaN(monto) || isNaN(cantidad) || monto <= 0 || cantidad <= 0) {
+            throw new Error("Por favor, ingresa datos válidos (valores positivos y no vacíos).");
         }
 
         // Buscar el producto en el inventario
-        const producto = productos.find(p => p.codigo == id_producto);
+        const productos = JSON.parse(localStorage.getItem("productos")) || [];
+        const producto = productos.find((p) => p.codigo == id_producto);
         if (!producto) {
             throw new Error("Producto no encontrado en el inventario.");
         }
 
-        // Verificar si hay suficiente stock
+        // Verificar stock disponible
         if (producto.disponible < cantidad) {
-            throw new Error("Stock insuficiente para realizar la venta.");
+            throw new Error(`Stock insuficiente. Solo hay ${producto.disponible} unidades disponibles.`);
         }
 
-        // Reducir el stock
+        // Reducir el stock y actualizar localStorage
         producto.disponible -= cantidad;
-
-        // Actualizar productos en localStorage
-        localStorage.setItem('productos', JSON.stringify(productos));
+        localStorage.setItem("productos", JSON.stringify(productos));
 
         // Registrar la venta
         this.ventas.push({
@@ -34,17 +37,15 @@ class VentasFacade {
             cantidad: parseInt(cantidad),
         });
 
-        // Guardar las ventas en localStorage
-        localStorage.setItem('ventas', JSON.stringify(this.ventas));
+        // Guardar ventas en localStorage
+        localStorage.setItem("ventas", JSON.stringify(this.ventas));
     }
 
     consultarVentas(tipo, fechaInicio = null, fechaFin = null) {
         const hoy = new Date();
         switch (tipo) {
             case "diaria":
-                return this.ventas.filter((venta) =>
-                    this._esMismaFecha(venta.fecha, hoy)
-                );
+                return this.ventas.filter((venta) => this._esMismaFecha(venta.fecha, hoy));
             case "mensual":
                 return this.ventas.filter(
                     (venta) =>
@@ -53,15 +54,13 @@ class VentasFacade {
                 );
             case "personalizada":
                 if (!fechaInicio || !fechaFin) {
-                    throw new Error("Fechas de inicio y fin requeridas para consulta personalizada.");
+                    throw new Error("Debes proporcionar las fechas de inicio y fin para la consulta personalizada.");
                 }
-                return this.ventas.filter(
-                    (venta) =>
-                        venta.fecha >= new Date(fechaInicio) &&
-                        venta.fecha <= new Date(fechaFin)
-                );
+                const inicio = new Date(fechaInicio);
+                const fin = new Date(fechaFin);
+                return this.ventas.filter((venta) => venta.fecha >= inicio && venta.fecha <= fin);
             default:
-                return [];
+                throw new Error("Tipo de consulta no válida.");
         }
     }
 
@@ -75,8 +74,10 @@ class VentasFacade {
 }
 
 const ventasFacade = new VentasFacade();
+
 document.getElementById("registro-venta").addEventListener("submit", (e) => {
     e.preventDefault();
+
     const fecha = document.getElementById("fecha").value;
     const id_producto = document.getElementById("id_producto").value;
     const monto = document.getElementById("monto").value;
@@ -85,18 +86,15 @@ document.getElementById("registro-venta").addEventListener("submit", (e) => {
     try {
         ventasFacade.registrarVenta(fecha, id_producto, monto, cantidad);
         alert("¡Venta registrada exitosamente!");
-
-        // Actualizar la tabla de productos para reflejar los cambios en el stock
-        updateTable();
         e.target.reset();
     } catch (error) {
         alert(error.message);
     }
 });
 
-// Consulta de ventas
 document.getElementById("consulta-ventas").addEventListener("submit", (e) => {
     e.preventDefault();
+
     const tipo = document.getElementById("tipo-consulta").value;
     const fechaInicio = document.getElementById("fecha-inicio").value || null;
     const fechaFin = document.getElementById("fecha-fin").value || null;
@@ -119,6 +117,7 @@ document.getElementById("consulta-ventas").addEventListener("submit", (e) => {
                     <td>${venta.fecha.toLocaleDateString()}</td>
                     <td>${venta.id_producto}</td>
                     <td>S/${venta.monto.toFixed(2)}</td>
+                    <td>${venta.cantidad}</td>
                 `;
                 tablaResultados.appendChild(fila);
             });
