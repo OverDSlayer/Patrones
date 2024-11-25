@@ -178,12 +178,13 @@ function crearRegistro() {
     const productos = [];
     const productRows = document.querySelectorAll(".product-row");
     productRows.forEach((row) => {
+        const codigo = parseFloat(row.querySelector(".product-id")) || 0;
         const nombre = row.querySelector(".product-name").value;
         const unidades = parseFloat(row.querySelector(".product-units").value) || 0;
         const costo = parseFloat(row.querySelector(".product-cost").value) || 0;
         const total = parseFloat(row.querySelector(".product-total").value) || 0;
 
-        productos.push({ nombre, unidades, costo, total });
+        productos.push({ codigo, nombre, unidades, costo, total });
     });
 
     const totalSinIgv = parseFloat(document.getElementById("total-sin-igv").value) || 0;
@@ -225,6 +226,7 @@ function limpiarCampos() {
     const productContainer = document.getElementById("products-container");
     productContainer.innerHTML = `
         <div class="product-row">
+            <input type="text" class="input product-id" required>
             <input type="text" class="input product-name" placeholder="Producto" required>
             <input type="number" class="input product-units" oninput="calculateRowTotal(this)" required>
             <input type="number" class="input product-cost" oninput="calculateRowTotal(this)" required>
