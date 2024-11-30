@@ -133,10 +133,18 @@ document.getElementById("consulta-ventas").addEventListener("submit", (e) => {
     }
 });
 
+function cargarProductosDesdeCompras() {
+    const compras = JSON.parse(localStorage.getItem("compras")) || [];
+    const productos = compras.flatMap(compra => compra.productos); 
+    localStorage.setItem("productos", JSON.stringify(productos)); 
+    cargarProductos(); 
+}
+
 function cargarProductos() {
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
     const selectProducto = document.getElementById("producto");
 
+    selectProducto.innerHTML = `<option value="" disabled selected>Seleccione un producto</option>`;
     productos.forEach((producto) => {
         const option = document.createElement("option");
         option.value = producto.codigo; // Código como valor
@@ -144,6 +152,7 @@ function cargarProductos() {
         selectProducto.appendChild(option);
     });
 }
+// Actualizar los campos al seleccionar un producto
 document.getElementById("producto").addEventListener("change", () => {
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
     const codigoSeleccionado = document.getElementById("producto").value;
@@ -151,40 +160,27 @@ document.getElementById("producto").addEventListener("change", () => {
     const producto = productos.find((p) => p.codigo == codigoSeleccionado);
     if (producto) {
         document.getElementById("id_producto").value = producto.codigo;
-        document.getElementById("precio_unitario").value = producto.precio.toFixed(2);
+        document.getElementById("precio").value = producto.precio.toFixed(2); 
     }
 });
+
+// Cálculo automático del monto
 document.getElementById("cantidad").addEventListener("input", () => {
-    const precio = parseFloat(document.getElementById("precio_unitario").value) || 0;
-    const cantidad = parseFloat(document.getElementById("cantidad").value) || 0;
+    const precioInput = document.getElementById("precio").value;
+    const cantidadInput = document.getElementById("cantidad").value;
 
-    const monto = precio * cantidad;
-    document.getElementById("monto").value = monto.toFixed(2);
-});
-document.addEventListener("DOMContentLoaded", () => {
-    cargarProductos();
-});
-const tipoConsulta = document.getElementById('tipo-consulta');
-const fechaInicio = document.getElementById('fecha-inicio');
-const fechaFin = document.getElementById('fecha-fin');
+    const precio = parseFloat(precioInput) || 0;
+    const cantidad = parseFloat(cantidadInput) || 0;
 
-tipoConsulta.addEventListener('change', () => {
-    if (tipoConsulta.value === 'personalizada') {
-        fechaInicio.disabled = false;
-        fechaFin.disabled = false;
+    if (precio > 0 && cantidad > 0) {
+        const monto = precio * cantidad;
+        document.getElementById("monto").value = monto.toFixed(2);
     } else {
-        fechaInicio.disabled = true;
-        fechaFin.disabled = true;
-        fechaInicio.value = '';
-        fechaFin.value = '';
+        document.getElementById("monto").value = ""; // Limpiar monto si no es válido
     }
 });
 
-document.getElementById("cantidad").addEventListener("input", () => {
-    const precio = parseFloat(document.getElementById("precio_unitario").value) || 0;
-    const cantidad = parseFloat(document.getElementById("cantidad").value) || 0;
-
-    const monto = precio * cantidad;
-    document.getElementById("monto").value = monto.toFixed(2);
+// Inicialización al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    cargarProductosDesdeCompras(); 
 });
-

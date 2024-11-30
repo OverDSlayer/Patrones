@@ -61,7 +61,4 @@ window.onload = function () {
     document.getElementById("codigo").addEventListener("change", (e) => {
         fillProductDetails(e.target.value);
     });
-
-    cargarProveedores(); // Función ya existente para cargar proveedores
-    mostrarCompras(); // Función ya existente para mostrar compras
 };
